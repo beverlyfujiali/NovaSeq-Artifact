@@ -1,0 +1,33 @@
+python3 /n/data1/hms/dbmi/park/antuan/SNVCurate/calling/Mutect2_read.py \
+-tumor /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/bams_tumor \
+-pon /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/pon/pon.vcf \
+-reference /n/data1/hms/dbmi/park/vinay/referenceGenomes/external_refs/human_g1k_v37_decoy_alone/human_g1k_v37_decoy.fasta \
+-out /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs \
+-csv /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/tumor_names.csv \
+-interval_list none \
+--mail_user beverlyfu@college.harvard.edu \
+--mail_type FAIL \
+-p short \
+-psuper short \
+-t 12:0:0 \
+-ct 250 -cm 3000 \
+--mem_per_cpu 4G \
+-stall 300 \
+-r1 <> -r2 <> &
+
+python3 /n/data1/hms/dbmi/park/antuan/SNVCurate/calling/Mutect2_read.py \
+-tumor /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/bams_tumor \
+-pon /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/pon/pon.vcf \
+-reference /n/data1/hms/dbmi/park/vinay/referenceGenomes/external_refs/human_g1k_v37_decoy_alone/human_g1k_v37_decoy.fasta \
+-out /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs \
+-csv /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/tumor_names.csv \
+-interval_list none \
+--mail_user beverlyfu@college.harvard.edu \
+--mail_type FAIL \
+-p park \
+-psuper park \
+-t 12:0:0 \
+-ct 250 -cm 3000 \
+--mem_per_cpu 4G \
+-stall 300 \
+-r1 <> -r2 <> &
