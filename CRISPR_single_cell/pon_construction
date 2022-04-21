@@ -1,0 +1,29 @@
+april 21: learning how to create a panel of normals from various healthy mice strains
+
+mice data from wellcome sanger
+https://www.sanger.ac.uk/data/mouse-genomes-project/
+
+ftp to download mice data
+ssh bf83@transfer.rc.hms.harvard.edu
+ftp ftp-mouse.sanger.ac.uk
+user: anonymous
+pw: email address
+
+use gatk pipeline
+https://gatk.broadinstitute.org/hc/en-us/articles/360042479112-CreateSomaticPanelOfNormals-BETA-
+
+ gatk Mutect2 -R reference.fasta -I normal1.bam -max-mnp-distance 0 -O normal1.vcf.gz
+ 
+ gatk GenomicsDBImport -R reference.fasta -L intervals.interval_list \
+       --genomicsdb-workspace-path pon_db \
+       -V normal1.vcf.gz \
+       -V normal2.vcf.gz \
+       -V normal3.vcf.gz
+       
+ gatk CreateSomaticPanelOfNormals -R reference.fasta -V gendb://pon_db -O pon.vcf.gz
+ 
+ difference between mutect2 and haplotypecaller
+ https://gatk.broadinstitute.org/hc/en-us/articles/360035890491
+ 
+ interpreting vcf files
+ https://samtools.github.io/hts-specs/VCFv4.2.pdf
