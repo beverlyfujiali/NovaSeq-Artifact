@@ -29,5 +29,5 @@ python3 /n/data1/hms/dbmi/park/antuan/SNVCurate/calling/Mutect2_read.py \
 -t 12:0:0 \
 -ct 250 -cm 3000 \
 --mem_per_cpu 4G \
--stall 300 \
--r1 <> -r2 <> &
+-stall 100 \
+-r1 1 -r2 120 &
