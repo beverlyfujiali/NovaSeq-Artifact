@@ -31,3 +31,28 @@ python3 /n/data1/hms/dbmi/park/antuan/SNVCurate/calling/Mutect2_read.py \
 --mem_per_cpu 4G \
 -stall 100 \
 -r1 1 -r2 120 &
+
+
+
+normals
+
+python3 /n/data1/hms/dbmi/park/antuan/SNVCurate/calling/Mutect2_read.py \
+-tumor /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/bams_normal \
+-pon /n/data1/hms/dbmi/park/victor/references/TCGA_1000_PON.b37.vcf \
+-reference /n/data1/hms/dbmi/park/vinay/referenceGenomes/external_refs/human_g1k_v37_decoy_alone/human_g1k_v37_decoy.fasta \
+-out /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs \
+-csv /n/data1/hms/dbmi/park/vinay/analysis/crispr_single_cell/variant_calling/20220326_external_dataset_mutation_calls/gaudelli_abe_followup_2020/wgs/normals.csv \
+-interval_list none \
+--mail_user beverlyfu@college.harvard.edu \
+--mail_type FAIL \
+-p short \
+-psuper short \
+-t 12:0:0 \
+-ct 250 -cm 3000 \
+--mem_per_cpu 4G \
+-stall 10 \
+-r1 1 -r2 25 &
+
+
+
+
