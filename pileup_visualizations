@@ -1,5 +1,69 @@
-10. Convert BCF to VCF
+0. Note sample metadata and change to relevant directory
+# Ref genome used
+grch37d5      /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37d5/human_g1k_v37_decoy.fasta
+hg38          /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/hg38/Homo_sapiens_assembly38.fasta
 
-11. Parse into different mutation categories C>A / C>G / C>T / T>A / T>C / T>G
+# Activate environment & change to directory with BCFs from pileup pipeline
+conda activate SigProfiler
+cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines
 
-12. Take low depth mutations DP=1-3 
+1. Convert BCF to VCF
+sbatch 1_bcf_to_vcf.sh 19-km12_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-km12_novaseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hct116_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hct116_novaseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-u2os_hiseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-u2os_novaseq1_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-u2os_novaseq2_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh na12878_hiseq_chr19_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh na12878_novaseqx_chr19_finally_filtered.bcf-call 
+
+2. Parse VCF into 12 mutation categories
+sbatch 2_parse_only.sh 19-km12_hiseq_finally_filtered.vcf 14627141
+sbatch 2_parse_only.sh 19-km12_novaseq_finally_filtered.vcf 14627094
+sbatch 2_parse_only.sh 19-hct116_hiseq_finally_filtered.vcf 14627168
+sbatch 2_parse_only.sh 19-hct116_novaseq_finally_filtered.vcf 14627220
+sbatch 2_parse_only.sh 19-u2os_hiseq_finally_filtered.vcf 14627262
+sbatch 2_parse_only.sh 19-u2os_novaseq1_finally_filtered.vcf 14627296
+sbatch 2_parse_only.sh 19-u2os_novaseq2_finally_filtered.vcf 14627330
+
+sbatch 2_parse_only.sh na12878_hiseq_chr19_finally_filtered.vcf 14629011
+sbatch 2_parse_only.sh na12878_novaseqx_chr19_finally_filtered.vcf 14629040
+
+NEED TO COLLAPSE INTO REVERSE COMPLEMENTARY
+
+3. Take low depth mutations (range from DP=1 to 3)
+sbatch 3_take_by_dp.sh 19-km12_hiseq 1
+sbatch 3_take_by_dp.sh 19-km12_hiseq 2
+sbatch 3_take_by_dp.sh 19-km12_hiseq 3
+
+sbatch 3_take_by_dp.sh 19-km12_novaseq 1
+sbatch 3_take_by_dp.sh 19-km12_novaseq 2
+sbatch 3_take_by_dp.sh 19-km12_novaseq 3
+
+sbatch 3_take_by_dp.sh 19-hct116_hiseq 1
+sbatch 3_take_by_dp.sh 19-hct116_hiseq 2
+sbatch 3_take_by_dp.sh 19-hct116_hiseq 3
+
+sbatch 3_take_by_dp.sh 19-hct116_novaseq 1
+sbatch 3_take_by_dp.sh 19-hct116_novaseq 2
+sbatch 3_take_by_dp.sh 19-hct116_novaseq 3
+
+sbatch 3_take_by_dp.sh 19-u2os_hiseq 1
+sbatch 3_take_by_dp.sh 19-u2os_hiseq 2
+sbatch 3_take_by_dp.sh 19-u2os_hiseq 3
+
+sbatch 3_take_by_dp.sh 19-u2os_novaseq1 1
+sbatch 3_take_by_dp.sh 19-u2os_novaseq1 2
+sbatch 3_take_by_dp.sh 19-u2os_novaseq1 3
+
+sbatch 3_take_by_dp.sh 19-u2os_novaseq2 1
+sbatch 3_take_by_dp.sh 19-u2os_novaseq2 2
+sbatch 3_take_by_dp.sh 19-u2os_novaseq2 3
+
+4. Overall coverage plots (HiSeq and NovaSeq separately)
+
+
+
+5. Overall read depth histograms (HiSeq and NovaSeq on the same chart)
+
