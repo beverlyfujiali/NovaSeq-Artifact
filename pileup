@@ -1,7 +1,7 @@
 0. Note sample metadata
 # Ref genome used (will affect whether to use chr19 or 19 in subset script, and which alignment script to use)
 grch37d5      /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37d5/human_g1k_v37_decoy.fasta
-hg38 		      /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/hg38/Homo_sapiens_assembly38.fasta
+hg38          /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/hg38/Homo_sapiens_assembly38.fasta
 
 Others:
 b37                         /n/data1/hms/dbmi/park/references/b37/Homo_sapiens_assembly19/Homo_sapiens_assembly19.fasta
