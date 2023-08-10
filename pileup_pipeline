@@ -16,23 +16,15 @@ t2t                         /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/T2T_v2.0/G
 conda activate lowcov
 cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup
 
-2. Link BAM and its index
+2. Download/Link BAM and its index
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam .
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_novaseq.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_novaseq.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_hiseq.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_hiseq.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_novaseq.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_novaseq.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_hiseq.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_hiseq.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq1.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq1.bam.bai .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam .
-ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam.bai .
+...
 
-3. Subset BAM to chromosome 19 for expedience (19/chr19 as per ref genome grch37/hg38)
+sbatch 2_download.sh https://storage.googleapis.com/brain-genomics-public/research/sequencing/grch38/bam/novaseq/wgs_pcr_free/50x/HG001.novaseq.pcr-free.50x.dedup.grch38.bam
+...
+
+3. Subset BAM to chromosome 19 for expedience if necessary (19/chr19 as per ref genome grch37/hg38)
 sbatch 3_subset_19.sh km12_hiseq.bam
 sbatch 3_subset_19.sh km12_novaseq.bam
 sbatch 3_subset_19.sh hct116_hiseq.bam
@@ -50,6 +42,10 @@ sbatch 4_collate_fastq.sh 19-u2os_hiseq.bam
 sbatch 4_collate_fastq.sh 19-u2os_novaseq1.bam
 sbatch 4_collate_fastq.sh 19-u2os_novaseq2.bam
 
+sbatch 4_collate_fastq.sh na12878_novaseqx_chr19.bam
+sbatch 4_collate_fastq.sh na12878_hiseq_chr19.bam
+
+
 5. Trim FASTQs using Trimmomatic (choose script as per read length 101/151 – typically hiseq/novaseq)
 sbatch 5_trim_fastqs_101.sh 19-km12_hiseq.1.fastq.gz 19-km12_hiseq.2.fastq.gz
 sbatch 5_trim_fastqs_151.sh 19-km12_novaseq.1.fastq.gz 19-km12_novaseq.2.fastq.gz
@@ -58,6 +54,9 @@ sbatch 5_trim_fastqs_151.sh 19-hct116_novaseq.1.fastq.gz 19-hct116_novaseq.2.fas
 sbatch 5_trim_fastqs_101.sh 19-u2os_hiseq.1.fastq.gz 19-u2os_hiseq.2.fastq.gz
 sbatch 5_trim_fastqs_151.sh 19-u2os_novaseq1.1.fastq.gz 19-u2os_novaseq1.2.fastq.gz
 sbatch 5_trim_fastqs_151.sh 19-u2os_novaseq2.1.fastq.gz 19-u2os_novaseq2.2.fastq.gz
+
+sbatch 5_trim_fastqs_151.sh na12878_novaseqx_chr19.1.fastq.gz na12878_novaseqx_chr19.2.fastq.gz
+sbatch 5_trim_fastqs_101.sh na12878_hiseq_chr19.1.fastq.gz na12878_hiseq_chr19.2.fastq.gz
 
 6. Align trimmed FASTQs using BWA (choose script as per ref genome grch37/hg38)
 sbatch 6_align_hg38.sh 19-km12_hiseq.1_p.fastq 19-km12_hiseq.2_p.fastq
@@ -68,6 +67,9 @@ sbatch 6_align_hg38.sh 19-u2os_hiseq.1_p.fastq 19-u2os_hiseq.2_p.fastq
 sbatch 6_align_hg38.sh 19-u2os_novaseq1.1_p.fastq 19-u2os_novaseq1.2_p.fastq
 sbatch 6_align_hg38.sh 19-u2os_novaseq2.1_p.fastq 19-u2os_novaseq2.2_p.fastq
 
+sbatch 6_align_grch37.sh na12878_novaseqx_chr19.1_p.fastq na12878_novaseqx_chr19.2_p.fastq 
+sbatch 6_align_grch37.sh na12878_hiseq_chr19.1_p.fastq na12878_hiseq_chr19.2_p.fastq 
+
 7. Postprocess trimmed BAMs using fixmate, sort, markdup
 sbatch 7_postprocess_bam.sh 19-km12_hiseq_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-km12_novaseq_trimmed.bam 
@@ -76,6 +78,9 @@ sbatch 7_postprocess_bam.sh 19-hct116_novaseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-u2os_hiseq_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-u2os_novaseq1_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-u2os_novaseq2_trimmed.bam 
+
+sbatch 7_postprocess_bam.sh na12878_hiseq_chr19_trimmed.bam
+sbatch 7_postprocess_bam.sh na12878_novaseqx_chr19_trimmed.bam
 
 8. Filter trimmed BAMs by mapping quality (60), removing reads not in proper pairs, or fail sec/supp alignments/are duplicates/indels
 sbatch 8_aggressive_filter.sh 19-km12_hiseq_postprocessed.bam 
@@ -86,14 +91,20 @@ sbatch 8_aggressive_filter.sh 19-u2os_hiseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-u2os_novaseq1_postprocessed.bam 
 sbatch 8_aggressive_filter.sh 19-u2os_novaseq2_postprocessed.bam 
 
+sbatch 8_aggressive_filter.sh na12878_hiseq_chr19_postprocessed.bam
+sbatch 8_aggressive_filter.sh na12878_novaseqx_chr19_postprocessed.bam
+
 9. Pile up & call (choose script as per ref genome grch37/hg38)
-sbatch 9_mpileup_hg38.sh 19-km12_hiseq_finally_filtered.bam 14608640
-sbatch 9_mpileup_hg38.sh 19-km12_novaseq_finally_filtered.bam 14608641
-sbatch 9_mpileup_hg38.sh 19-hct116_hiseq_finally_filtered.bam 14608645
-sbatch 9_mpileup_hg38.sh 19-hct116_novaseq_finally_filtered.bam 14608950
-sbatch 9_mpileup_hg38.sh 19-u2os_hiseq_finally_filtered.bam 14608647
-sbatch 9_mpileup_hg38.sh 19-u2os_novaseq1_finally_filtered.bam 14608649
-sbatch 9_mpileup_hg38.sh 19-u2os_novaseq2_finally_filtered.bam 14608651
+sbatch 9_mpileup_hg38.sh 19-km12_hiseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-km12_novaseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-hct116_hiseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-hct116_novaseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-u2os_hiseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-u2os_novaseq1_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-u2os_novaseq2_finally_filtered.bam 
+
+sbatch 9_mpileup_grch37.sh na12878_hiseq_chr19_finally_filtered.bam 
+sbatch 9_mpileup_grch37.sh na12878_novaseqx_chr19_finally_filtered.bam 
 
 
 
