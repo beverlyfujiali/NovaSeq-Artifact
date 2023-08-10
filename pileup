@@ -1,0 +1,49 @@
+0. Note sample metadata
+# Ref genome used
+grch37 	/n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37d5/human_g1k_v37_decoy.fasta
+hg38 		/n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/Homo_sapiens_assembly38.fasta
+# Length of reads on machine e.g. 101 or 151 bp (will affect which trimming script to be used)
+
+1. Activate environment & change to pileup directory 
+conda activate lowcov
+cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup
+
+2. Link BAM and its index
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_novaseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_novaseq.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_hiseq.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_novaseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/hct116_novaseq.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_hiseq.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq1.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq1.bam.bai .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam.bai .
+
+3. Subset BAM to chromosome 19 for expedience
+sbatch 3_subset_19.sh km12_hiseq.bam
+sbatch 3_subset_19.sh km12_novaseq.bam
+sbatch 3_subset_19.sh hct116_hiseq.bam
+sbatch 3_subset_19.sh hct116_novaseq.bam
+sbatch 3_subset_19.sh u2os_hiseq.bam
+sbatch 3_subset_19.sh u2os_novaseq1.bam
+sbatch 3_subset_19.sh u2os_novaseq2.bam
+
+4. Convert BAM to FASTQ
+sbatch 4_collate_fastq.sh 19-km12_hiseq.bam
+sbatch 4_collate_fastq.sh 19-km12_novaseq.bam
+sbatch 4_collate_fastq.sh 19-hct116_hiseq.bam
+sbatch 4_collate_fastq.sh 19-hct116_novaseq.bam
+sbatch 4_collate_fastq.sh 19-u2os_hiseq.bam
+sbatch 4_collate_fastq.sh 19-u2os_novaseq1.bam
+sbatch 4_collate_fastq.sh 19-u2os_novaseq2.bam
+
+5. Trim FASTQs using trimmomatic
+sbatch 5_trim_fastqs_101.sh 19-km12_hiseq.1.fastq.gz 19-km12_hiseq.2.fastq.gz
+sbatch 5_trim_fastqs_151.sh 19-km12_novaseq.1.fastq.gz 19-km12_novaseq.2.fastq.gz
+
+
