@@ -1,0 +1,5 @@
+10. Convert BCF to VCF
+
+11. Parse into different mutation categories C>A / C>G / C>T / T>A / T>C / T>G
+
+12. Take low depth mutations DP=1-3 
