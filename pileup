@@ -1,7 +1,15 @@
 0. Note sample metadata
-# Ref genome used
-grch37 	/n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37d5/human_g1k_v37_decoy.fasta
-hg38 		/n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/Homo_sapiens_assembly38.fasta
+# Ref genome used (will affect whether to use chr19 or 19 in subset script, and which alignment script to use)
+grch37d5                    /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37d5/human_g1k_v37_decoy.fasta
+hg38 		                    /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/hg38/Homo_sapiens_assembly38.fasta
+
+Others:
+b37                         /n/data1/hms/dbmi/park/references/b37/Homo_sapiens_assembly19/Homo_sapiens_assembly19.fasta
+grch37                      /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/GRCh37/human_g1k_v37.fasta
+grch38_no_alt               /n/data1/hms/dbmi/park/daniel/BiO/Research/DECOY/references/GRCh38/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna
+grch38_no_alt_plus_decoy    /n/data1/hms/dbmi/park/daniel/BiO/Research/DECOY/references/GRCh38_no_alt_plus_decoy/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna
+t2t                         /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/T2T_v2.0/GCF_009914755.1_T2T-CHM13v2.0_genomic.fna
+
 # Length of reads on machine e.g. 101 or 151 bp (will affect which trimming script to be used)
 
 1. Activate environment & change to pileup directory 
@@ -24,7 +32,7 @@ ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam .
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/u2os_novaseq2.bam.bai .
 
-3. Subset BAM to chromosome 19 for expedience
+3. Subset BAM to chromosome 19 for expedience (19/chr19 as per ref genome grch37/hg38)
 sbatch 3_subset_19.sh km12_hiseq.bam
 sbatch 3_subset_19.sh km12_novaseq.bam
 sbatch 3_subset_19.sh hct116_hiseq.bam
@@ -42,8 +50,40 @@ sbatch 4_collate_fastq.sh 19-u2os_hiseq.bam
 sbatch 4_collate_fastq.sh 19-u2os_novaseq1.bam
 sbatch 4_collate_fastq.sh 19-u2os_novaseq2.bam
 
-5. Trim FASTQs using trimmomatic
+5. Trim FASTQs using Trimmomatic (choose script as per read length 101/151 – typically hiseq/novaseq)
 sbatch 5_trim_fastqs_101.sh 19-km12_hiseq.1.fastq.gz 19-km12_hiseq.2.fastq.gz
 sbatch 5_trim_fastqs_151.sh 19-km12_novaseq.1.fastq.gz 19-km12_novaseq.2.fastq.gz
+sbatch 5_trim_fastqs_101.sh 19-hct116_hiseq.1.fastq.gz 19-hct116_hiseq.2.fastq.gz
+sbatch 5_trim_fastqs_151.sh 19-hct116_novaseq.1.fastq.gz 19-hct116_novaseq.2.fastq.gz
+sbatch 5_trim_fastqs_101.sh 19-u2os_hiseq.1.fastq.gz 19-u2os_hiseq.2.fastq.gz
+sbatch 5_trim_fastqs_151.sh 19-u2os_novaseq1.1.fastq.gz 19-u2os_novaseq1.2.fastq.gz
+sbatch 5_trim_fastqs_151.sh 19-u2os_novaseq2.1.fastq.gz 19-u2os_novaseq2.2.fastq.gz
+
+6. Align trimmed FASTQs using BWA (choose script as per ref genome grch37/hg38)
+sbatch 6_align_hg38.sh 19-km12_hiseq.1_p.fastq 19-km12_hiseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-km12_novaseq.1_p.fastq 19-km12_novaseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-hct116_hiseq.1_p.fastq 19-hct116_hiseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-hct116_novaseq.1_p.fastq 19-hct116_novaseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-u2os_hiseq.1_p.fastq 19-u2os_hiseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-u2os_novaseq1.1_p.fastq 19-u2os_novaseq1.2_p.fastq
+sbatch 6_align_hg38.sh 19-u2os_novaseq2.1_p.fastq 19-u2os_novaseq2.2_p.fastq
+
+7. Postprocess trimmed BAMs using fixmate, sort, markdup
+sbatch 7_postprocess_bam.sh 19-hct116_hiseq_trimmed.bam
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
