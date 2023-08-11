@@ -19,51 +19,194 @@ sbatch 1_bcf_to_vcf.sh na12878_hiseq_chr19_finally_filtered.bcf-call
 sbatch 1_bcf_to_vcf.sh na12878_novaseqx_chr19_finally_filtered.bcf-call 
 
 2. Parse VCF into 12 mutation categories
-sbatch 2_parse_only.sh 19-km12_hiseq_finally_filtered.vcf 14627141
-sbatch 2_parse_only.sh 19-km12_novaseq_finally_filtered.vcf 14627094
-sbatch 2_parse_only.sh 19-hct116_hiseq_finally_filtered.vcf 14627168
-sbatch 2_parse_only.sh 19-hct116_novaseq_finally_filtered.vcf 14627220
-sbatch 2_parse_only.sh 19-u2os_hiseq_finally_filtered.vcf 14627262
-sbatch 2_parse_only.sh 19-u2os_novaseq1_finally_filtered.vcf 14627296
-sbatch 2_parse_only.sh 19-u2os_novaseq2_finally_filtered.vcf 14627330
+sbatch 2_parse_only.sh 19-km12_hiseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-km12_novaseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-hct116_hiseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-hct116_novaseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-u2os_hiseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-u2os_novaseq1_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-u2os_novaseq2_finally_filtered.vcf 
 
 sbatch 2_parse_only.sh na12878_hiseq_chr19_finally_filtered.vcf 14629011
 sbatch 2_parse_only.sh na12878_novaseqx_chr19_finally_filtered.vcf 14629040
 
-NEED TO COLLAPSE INTO REVERSE COMPLEMENTARY
+2.5 Collapse into reverse complementaries
+cat 19-km12_hiseq_ac_mutations.vcf 19-km12_hiseq_tg_mutations.vcf > 19-km12_hiseq_tg_ac_mutations.vcf
+cat 19-km12_hiseq_at_mutations.vcf 19-km12_hiseq_ta_mutations.vcf > 19-km12_hiseq_ta_at_mutations.vcf
+cat 19-km12_hiseq_ag_mutations.vcf 19-km12_hiseq_tc_mutations.vcf > 19-km12_hiseq_tc_ag_mutations.vcf
+cat 19-km12_hiseq_gt_mutations.vcf 19-km12_hiseq_ca_mutations.vcf > 19-km12_hiseq_ca_gt_mutations.vcf
+cat 19-km12_hiseq_ga_mutations.vcf 19-km12_hiseq_ct_mutations.vcf > 19-km12_hiseq_ct_ga_mutations.vcf
+cat 19-km12_hiseq_gc_mutations.vcf 19-km12_hiseq_cg_mutations.vcf > 19-km12_hiseq_cg_gc_mutations.vcf
+
+cat 19-km12_novaseq_ac_mutations.vcf 19-km12_novaseq_tg_mutations.vcf > 19-km12_novaseq_tg_ac_mutations.vcf
+cat 19-km12_novaseq_at_mutations.vcf 19-km12_novaseq_ta_mutations.vcf > 19-km12_novaseq_ta_at_mutations.vcf
+cat 19-km12_novaseq_ag_mutations.vcf 19-km12_novaseq_tc_mutations.vcf > 19-km12_novaseq_tc_ag_mutations.vcf
+cat 19-km12_novaseq_gt_mutations.vcf 19-km12_novaseq_ca_mutations.vcf > 19-km12_novaseq_ca_gt_mutations.vcf
+cat 19-km12_novaseq_ga_mutations.vcf 19-km12_novaseq_ct_mutations.vcf > 19-km12_novaseq_ct_ga_mutations.vcf
+cat 19-km12_novaseq_gc_mutations.vcf 19-km12_novaseq_cg_mutations.vcf > 19-km12_novaseq_cg_gc_mutations.vcf
+
+cat 19-hct116_hiseq_ac_mutations.vcf 19-hct116_hiseq_tg_mutations.vcf > 19-hct116_hiseq_tg_ac_mutations.vcf
+cat 19-hct116_hiseq_at_mutations.vcf 19-hct116_hiseq_ta_mutations.vcf > 19-hct116_hiseq_ta_at_mutations.vcf
+cat 19-hct116_hiseq_ag_mutations.vcf 19-hct116_hiseq_tc_mutations.vcf > 19-hct116_hiseq_tc_ag_mutations.vcf
+cat 19-hct116_hiseq_gt_mutations.vcf 19-hct116_hiseq_ca_mutations.vcf > 19-hct116_hiseq_ca_gt_mutations.vcf
+cat 19-hct116_hiseq_ga_mutations.vcf 19-hct116_hiseq_ct_mutations.vcf > 19-hct116_hiseq_ct_ga_mutations.vcf
+cat 19-hct116_hiseq_gc_mutations.vcf 19-hct116_hiseq_cg_mutations.vcf > 19-hct116_hiseq_cg_gc_mutations.vcf
+
+cat 19-hct116_novaseq_ac_mutations.vcf 19-hct116_novaseq_tg_mutations.vcf > 19-hct116_novaseq_tg_ac_mutations.vcf
+cat 19-hct116_novaseq_at_mutations.vcf 19-hct116_novaseq_ta_mutations.vcf > 19-hct116_novaseq_ta_at_mutations.vcf
+cat 19-hct116_novaseq_ag_mutations.vcf 19-hct116_novaseq_tc_mutations.vcf > 19-hct116_novaseq_tc_ag_mutations.vcf
+cat 19-hct116_novaseq_gt_mutations.vcf 19-hct116_novaseq_ca_mutations.vcf > 19-hct116_novaseq_ca_gt_mutations.vcf
+cat 19-hct116_novaseq_ga_mutations.vcf 19-hct116_novaseq_ct_mutations.vcf > 19-hct116_novaseq_ct_ga_mutations.vcf
+cat 19-hct116_novaseq_gc_mutations.vcf 19-hct116_novaseq_cg_mutations.vcf > 19-hct116_novaseq_cg_gc_mutations.vcf
+
+cat 19-u2os_hiseq_ac_mutations.vcf 19-u2os_hiseq_tg_mutations.vcf > 19-u2os_hiseq_tg_ac_mutations.vcf
+cat 19-u2os_hiseq_at_mutations.vcf 19-u2os_hiseq_ta_mutations.vcf > 19-u2os_hiseq_ta_at_mutations.vcf
+cat 19-u2os_hiseq_ag_mutations.vcf 19-u2os_hiseq_tc_mutations.vcf > 19-u2os_hiseq_tc_ag_mutations.vcf
+cat 19-u2os_hiseq_gt_mutations.vcf 19-u2os_hiseq_ca_mutations.vcf > 19-u2os_hiseq_ca_gt_mutations.vcf
+cat 19-u2os_hiseq_ga_mutations.vcf 19-u2os_hiseq_ct_mutations.vcf > 19-u2os_hiseq_ct_ga_mutations.vcf
+cat 19-u2os_hiseq_gc_mutations.vcf 19-u2os_hiseq_cg_mutations.vcf > 19-u2os_hiseq_cg_gc_mutations.vcf
+
+cat 19-u2os_novaseq1_ac_mutations.vcf 19-u2os_novaseq1_tg_mutations.vcf > 19-u2os_novaseq1_tg_ac_mutations.vcf
+cat 19-u2os_novaseq1_at_mutations.vcf 19-u2os_novaseq1_ta_mutations.vcf > 19-u2os_novaseq1_ta_at_mutations.vcf
+cat 19-u2os_novaseq1_ag_mutations.vcf 19-u2os_novaseq1_tc_mutations.vcf > 19-u2os_novaseq1_tc_ag_mutations.vcf
+cat 19-u2os_novaseq1_gt_mutations.vcf 19-u2os_novaseq1_ca_mutations.vcf > 19-u2os_novaseq1_ca_gt_mutations.vcf
+cat 19-u2os_novaseq1_ga_mutations.vcf 19-u2os_novaseq1_ct_mutations.vcf > 19-u2os_novaseq1_ct_ga_mutations.vcf
+cat 19-u2os_novaseq1_gc_mutations.vcf 19-u2os_novaseq1_cg_mutations.vcf > 19-u2os_novaseq1_cg_gc_mutations.vcf
+
+cat 19-u2os_novaseq2_ac_mutations.vcf 19-u2os_novaseq2_tg_mutations.vcf > 19-u2os_novaseq2_tg_ac_mutations.vcf
+cat 19-u2os_novaseq2_at_mutations.vcf 19-u2os_novaseq2_ta_mutations.vcf > 19-u2os_novaseq2_ta_at_mutations.vcf
+cat 19-u2os_novaseq2_ag_mutations.vcf 19-u2os_novaseq2_tc_mutations.vcf > 19-u2os_novaseq2_tc_ag_mutations.vcf
+cat 19-u2os_novaseq2_gt_mutations.vcf 19-u2os_novaseq2_ca_mutations.vcf > 19-u2os_novaseq2_ca_gt_mutations.vcf
+cat 19-u2os_novaseq2_ga_mutations.vcf 19-u2os_novaseq2_ct_mutations.vcf > 19-u2os_novaseq2_ct_ga_mutations.vcf
+cat 19-u2os_novaseq2_gc_mutations.vcf 19-u2os_novaseq2_cg_mutations.vcf > 19-u2os_novaseq2_cg_gc_mutations.vcf
 
 3. Take low depth mutations (range from DP=1 to 3)
-sbatch 3_take_by_dp.sh 19-km12_hiseq 1
-sbatch 3_take_by_dp.sh 19-km12_hiseq 2
-sbatch 3_take_by_dp.sh 19-km12_hiseq 3
 
-sbatch 3_take_by_dp.sh 19-km12_novaseq 1
-sbatch 3_take_by_dp.sh 19-km12_novaseq 2
-sbatch 3_take_by_dp.sh 19-km12_novaseq 3
+bash 3_take_by_dp.sh 19-km12_hiseq 1
+bash 3_take_by_dp.sh 19-km12_hiseq 2
+bash 3_take_by_dp.sh 19-km12_hiseq 3
 
-sbatch 3_take_by_dp.sh 19-hct116_hiseq 1
-sbatch 3_take_by_dp.sh 19-hct116_hiseq 2
-sbatch 3_take_by_dp.sh 19-hct116_hiseq 3
+bash 3_take_by_dp.sh 19-km12_novaseq 1
+bash 3_take_by_dp.sh 19-km12_novaseq 2
+bash 3_take_by_dp.sh 19-km12_novaseq 3
 
-sbatch 3_take_by_dp.sh 19-hct116_novaseq 1
-sbatch 3_take_by_dp.sh 19-hct116_novaseq 2
-sbatch 3_take_by_dp.sh 19-hct116_novaseq 3
+bash 3_take_by_dp.sh 19-hct116_hiseq 1
+bash 3_take_by_dp.sh 19-hct116_hiseq 2
+bash 3_take_by_dp.sh 19-hct116_hiseq 3
 
-sbatch 3_take_by_dp.sh 19-u2os_hiseq 1
-sbatch 3_take_by_dp.sh 19-u2os_hiseq 2
-sbatch 3_take_by_dp.sh 19-u2os_hiseq 3
+bash 3_take_by_dp.sh 19-hct116_novaseq 1
+bash 3_take_by_dp.sh 19-hct116_novaseq 2
+bash 3_take_by_dp.sh 19-hct116_novaseq 3
 
-sbatch 3_take_by_dp.sh 19-u2os_novaseq1 1
-sbatch 3_take_by_dp.sh 19-u2os_novaseq1 2
-sbatch 3_take_by_dp.sh 19-u2os_novaseq1 3
+bash 3_take_by_dp.sh 19-u2os_hiseq 1
+bash 3_take_by_dp.sh 19-u2os_hiseq 2
+bash 3_take_by_dp.sh 19-u2os_hiseq 3
 
-sbatch 3_take_by_dp.sh 19-u2os_novaseq2 1
-sbatch 3_take_by_dp.sh 19-u2os_novaseq2 2
-sbatch 3_take_by_dp.sh 19-u2os_novaseq2 3
+bash 3_take_by_dp.sh 19-u2os_novaseq1 1
+bash 3_take_by_dp.sh 19-u2os_novaseq1 2
+bash 3_take_by_dp.sh 19-u2os_novaseq1 3
 
-4. Overall coverage plots (HiSeq and NovaSeq separately)
+bash 3_take_by_dp.sh 19-u2os_novaseq2 1
+bash 3_take_by_dp.sh 19-u2os_novaseq2 2
+bash 3_take_by_dp.sh 19-u2os_novaseq2 3
 
+cd hct116
+cat hct116_hiseq/19-hct116_hiseq_dp_1.csv hct116_novaseq/19-hct116_novaseq_dp_1.csv > dp1.csv
+cat hct116_hiseq/19-hct116_hiseq_dp_2.csv hct116_novaseq/19-hct116_novaseq_dp_2.csv > dp2.csv
+cat hct116_hiseq/19-hct116_hiseq_dp_3.csv hct116_novaseq/19-hct116_novaseq_dp_3.csv > dp3.csv
 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-5. Overall read depth histograms (HiSeq and NovaSeq on the same chart)
+# Read the CSV file into a DataFrame with appropriate column labels
+column_labels = ["Substitution Type", "Number of Alt Allele Reporting Sites", "Platform"]
+df = pd.read_csv("dp5.csv", names=column_labels)
+
+# Sort the DataFrame by alphabetical order of Substitution Type
+df = df.sort_values(by="Substitution Type")
+
+# Reformat platform names to "NovaSeq" and "HiSeq"
+df["Platform"]=df["Platform"].map(lambda x: "NovaSeq" if x.lower() == "km12_novaseq/19-km12_novaseq" else "HiSeq")
+
+# Reformat all subst types to upper case
+df["Substitution Type"] = df["Substitution Type"].str.upper()
+
+# Define colors for the platforms
+colors = {"NovaSeq": "blue", "HiSeq": "red"}
+
+# Create the double bar plot using Seaborn
+plt.figure(figsize=(10, 6))
+ax = sns.barplot(
+    x="Substitution Type",
+    y="Number of Alt Allele Reporting Sites",
+    hue="Platform",
+    data=df,
+    palette=colors,
+)
+plt.xlabel("Substitution Type")
+plt.ylabel("Number of Alt Allele Reporting Sites")
+plt.title("Number of Alt-Allele Reporting Sites With 5 Supporting Reads")
+plt.legend(title="Platform")
+plt.xticks(rotation=45, ha="right")
+
+# Add labels to each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f"{height:.1f}", (p.get_x() + p.get_width() / 2, height),
+                ha='center', va='bottom', fontsize=8)
+
+# Save the plot at dpi 300
+plt.savefig("km12_dp_5.png", dpi=300)
+
+4. Overall TG read depth histograms (HiSeq and NovaSeq on the same chart)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# Function to extract DP values from a VCF file
+def extract_dp_values(vcf_filename):
+    dp_values = []
+    with open(vcf_filename, "r") as f:
+        for line in f:
+            if line.startswith("#"):
+                continue  # Skip header lines
+            fields = line.strip().split("\t")
+            info_field = fields[7]
+            for item in info_field.split(";"):
+                key, value = item.split("=")
+                if key == "DP":
+                    dp_values.append(int(value))
+    return dp_values
+
+# Read DP values from two VCF files
+dp_values_vcf1 = extract_dp_values("hct116_novaseq/19-hct116_novaseq_tc_ag_mutations.vcf")
+dp_values_vcf2 = extract_dp_values("hct116_hiseq/19-hct116_hiseq_tc_ag_mutations.vcf")
+
+# Create histograms
+plt.figure(figsize=(10, 6))
+sns.histplot(dp_values_vcf1, bins=50, kde=True, color="blue", label="NovaSeq")
+sns.histplot(dp_values_vcf2, bins=50, kde=True, color="red", label="HiSeq")
+plt.xlabel("Read Depth (DP)")
+plt.ylabel("Frequency")
+plt.title("Read Depth Distribution")
+plt.legend()
+plt.savefig("19-HCT116_TC_RDs.png", dpi=300)
+plt.show()
+
+# Check at which read depth TA is highest at. 
+mode_vcf1 = stats.mode(dp_values_vcf1).mode[0]
+mode_vcf2 = stats.mode(dp_values_vcf2).mode[0]
+
+# If at X:
+bash hct116_hiseq/3_take_by_dp.sh hct116_hiseq/19-hct116_hiseq 5
+bash hct116_hiseq/3_take_by_dp.sh hct116_novaseq/19-hct116_novaseq 5 
+cat hct116_hiseq/19-hct116_hiseq_dp_5.csv hct116_novaseq/19-hct116_novaseq_dp_5.csv > dp5.csv
+and plot.
+
+do for km12 and u2os.
+bash km12_hiseq/3_take_by_dp.sh km12_hiseq/19-km12_hiseq 5
+bash km12_hiseq/3_take_by_dp.sh km12_novaseq/19-km12_novaseq 5 
+cat km12_hiseq/19-km12_hiseq_dp_5.csv km12_novaseq/19-km12_novaseq_dp_5.csv > dp5.csv
 
