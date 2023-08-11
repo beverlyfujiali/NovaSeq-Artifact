@@ -19,6 +19,12 @@ cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup
 2. Download/Link BAM and its index
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam .
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_cgap/km12_hiseq.bam.bai .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_aroraSciRep2019_nygc_3CellLines/hcc1187-bl_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_aroraSciRep2019_nygc_3CellLines/hcc1187-bl_hiseq.bam.bai .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_aroraSciRep2019_nygc_3CellLines/hcc1187-bl_novaseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_aroraSciRep2019_nygc_3CellLines/hcc1187-bl_novaseq.bam.bai .
 ...
 
 sbatch 2_download.sh https://storage.googleapis.com/brain-genomics-public/research/sequencing/grch38/bam/novaseq/wgs_pcr_free/50x/HG001.novaseq.pcr-free.50x.dedup.grch38.bam
@@ -66,6 +72,9 @@ sbatch 3_subset_19.sh NA12891_novaseq.bam
 sbatch 3_subset_19.sh NA12892_hiseq.bam 
 sbatch 3_subset_19.sh NA12892_novaseq.bam 
 
+sbatch 3_subset_19.sh hcc1187-bl_hiseq.bam
+sbatch 3_subset_19.sh hcc1187-bl_novaseq.bam
+
 4. Convert BAM to FASTQ
 sbatch 4_collate_fastq.sh 19-km12_hiseq.bam
 sbatch 4_collate_fastq.sh 19-km12_novaseq.bam
@@ -87,17 +96,20 @@ sbatch 4_collate_fastq.sh 19-HG003_novaseq.bam
 sbatch 4_collate_fastq.sh 19-HG004_hiseq.bam 
 sbatch 4_collate_fastq.sh 19-HG004_novaseq.bam 
 
-sbatch 4_collate_fastq.sh 19-HG005_hiseq.bam 14647253
-sbatch 4_collate_fastq.sh 19-HG005_novaseq.bam 14647254
-sbatch 4_collate_fastq.sh 19-HG006_hiseq.bam 14647264
-sbatch 4_collate_fastq.sh 19-HG006_novaseq.bam 14647266
-sbatch 4_collate_fastq.sh 19-HG007_hiseq.bam 14647267
-sbatch 4_collate_fastq.sh 19-HG007_novaseq.bam 14647268
+sbatch 4_collate_fastq.sh 19-HG005_hiseq.bam 
+sbatch 4_collate_fastq.sh 19-HG005_novaseq.bam 
+sbatch 4_collate_fastq.sh 19-HG006_hiseq.bam 
+sbatch 4_collate_fastq.sh 19-HG006_novaseq.bam 
+sbatch 4_collate_fastq.sh 19-HG007_hiseq.bam 
+sbatch 4_collate_fastq.sh 19-HG007_novaseq.bam 
 
-sbatch 4_collate_fastq.sh 19-NA12891_hiseq.bam 14647197
-sbatch 4_collate_fastq.sh 19-NA12891_novaseq.bam 14647198
-sbatch 4_collate_fastq.sh 19-NA12892_hiseq.bam 14647199
-sbatch 4_collate_fastq.sh 19-NA12892_novaseq.bam 14647202
+sbatch 4_collate_fastq.sh 19-NA12891_hiseq.bam 
+sbatch 4_collate_fastq.sh 19-NA12891_novaseq.bam 
+sbatch 4_collate_fastq.sh 19-NA12892_hiseq.bam 
+sbatch 4_collate_fastq.sh 19-NA12892_novaseq.bam 
+
+sbatch 4_collate_fastq.sh 19-hcc1187-bl_hiseq.bam
+sbatch 4_collate_fastq.sh 19-hcc1187-bl_novaseq.bam
 
 5. Trim FASTQs using Trimmomatic (choose script as per read length 101/151 – typically hiseq/novaseq)
 sbatch 5_trim_fastqs_101.sh 19-km12_hiseq.1.fastq.gz 19-km12_hiseq.2.fastq.gz
@@ -132,6 +144,8 @@ sbatch 5_trim_fastqs_151.sh 19-NA12891_novaseq.1.fastq.gz 19-NA12891_novaseq.2.f
 sbatch 5_trim_fastqs_151.sh 19-NA12892_hiseq.1.fastq.gz 19-NA12892_hiseq.2.fastq.gz
 sbatch 5_trim_fastqs_151.sh 19-NA12892_novaseq.1.fastq.gz 19-NA12892_novaseq.2.fastq.gz 
 
+sbatch 5_trim_fastqs_151.sh 19-hcc1187-bl_hiseq.1.fastq.gz 19-hcc1187-bl_hiseq.2.fastq.gz 
+sbatch 5_trim_fastqs_151.sh 19-hcc1187-bl_novaseq.1.fastq.gz 19-hcc1187-bl_novaseq.2.fastq.gz 
 
 6. Align trimmed FASTQs using BWA (choose script as per ref genome grch37/hg38)
 sbatch 6_align_hg38.sh 19-km12_hiseq.1_p.fastq 19-km12_hiseq.2_p.fastq
@@ -145,26 +159,29 @@ sbatch 6_align_hg38.sh 19-u2os_novaseq2.1_p.fastq 19-u2os_novaseq2.2_p.fastq
 sbatch 6_align_grch37.sh na12878_novaseqx_chr19.1_p.fastq na12878_novaseqx_chr19.2_p.fastq 
 sbatch 6_align_grch37.sh na12878_hiseq_chr19.1_p.fastq na12878_hiseq_chr19.2_p.fastq 
 
-sbatch 6_align_hg38.sh 19-HG001_hiseq.1_p.fastq 19-HG001_hiseq.2_p.fastq 14647176
-sbatch 6_align_hg38.sh 19-HG001_novaseq.1_p.fastq 19-HG001_novaseq.2_p.fastq 14647177
-sbatch 6_align_hg38.sh 19-HG002_hiseq.1_p.fastq 19-HG002_hiseq.2_p.fastq 14647178
-sbatch 6_align_hg38.sh 19-HG002_novaseq.1_p.fastq 19-HG002_novaseq.2_p.fastq 14647179
-sbatch 6_align_hg38.sh 19-HG003_hiseq.1_p.fastq 19-HG003_hiseq.2_p.fastq 14647180
-sbatch 6_align_hg38.sh 19-HG003_novaseq.1_p.fastq 19-HG003_novaseq.2_p.fastq 14647181
-sbatch 6_align_hg38.sh 19-HG004_hiseq.1_p.fastq 19-HG004_hiseq.2_p.fastq 14647182
-sbatch 6_align_hg38.sh 19-HG004_novaseq.1_p.fastq 19-HG004_novaseq.2_p.fastq 14647183
+sbatch 6_align_hg38.sh 19-HG001_hiseq.1_p.fastq 19-HG001_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG001_novaseq.1_p.fastq 19-HG001_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG002_hiseq.1_p.fastq 19-HG002_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG002_novaseq.1_p.fastq 19-HG002_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG003_hiseq.1_p.fastq 19-HG003_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG003_novaseq.1_p.fastq 19-HG003_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG004_hiseq.1_p.fastq 19-HG004_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG004_novaseq.1_p.fastq 19-HG004_novaseq.2_p.fastq 
 
-sbatch 6_align_hg38.sh 19-HG005_hiseq.1_p.fastq 19-HG005_hiseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-HG005_novaseq.1_p.fastq 19-HG005_novaseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-HG006_hiseq.1_p.fastq 19-HG006_hiseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-HG006_novaseq.1_p.fastq 19-HG006_novaseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-HG007_hiseq.1_p.fastq 19-HG007_hiseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-HG005_hiseq.1_p.fastq 19-HG005_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG005_novaseq.1_p.fastq 19-HG005_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG006_hiseq.1_p.fastq 19-HG006_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG006_novaseq.1_p.fastq 19-HG006_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-HG007_hiseq.1_p.fastq 19-HG007_hiseq.2_p.fastq 
 sbatch 6_align_hg38.sh 19-HG007_novaseq.1_p.fastq 19-HG007_novaseq.2_p.fastq 
 
-sbatch 6_align_hg38.sh 19-NA12891_hiseq.1_p.fastq 19-NA12891_hiseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-NA12891_novaseq.1_p.fastq 19-NA12891_novaseq.2_p.fastq
-sbatch 6_align_hg38.sh 19-NA12892_hiseq.1_p.fastq 19-NA12892_hiseq.2_p.fastq
+sbatch 6_align_hg38.sh 19-NA12891_hiseq.1_p.fastq 19-NA12891_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-NA12891_novaseq.1_p.fastq 19-NA12891_novaseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-NA12892_hiseq.1_p.fastq 19-NA12892_hiseq.2_p.fastq 
 sbatch 6_align_hg38.sh 19-NA12892_novaseq.1_p.fastq 19-NA12892_novaseq.2_p.fastq 
+
+sbatch 6_align_hg38.sh 19-hcc1187-bl_hiseq.1_p.fastq 19-hcc1187-bl_hiseq.2_p.fastq 
+sbatch 6_align_hg38.sh 19-hcc1187-bl_novaseq.1_p.fastq 19-hcc1187-bl_novaseq.2_p.fastq 
 
 7. Postprocess trimmed BAMs using fixmate, sort, markdup
 sbatch 7_postprocess_bam.sh 19-km12_hiseq_trimmed.bam 
@@ -178,26 +195,29 @@ sbatch 7_postprocess_bam.sh 19-u2os_novaseq2_trimmed.bam
 sbatch 7_postprocess_bam.sh na12878_hiseq_chr19_trimmed.bam
 sbatch 7_postprocess_bam.sh na12878_novaseqx_chr19_trimmed.bam
 
-sbatch 7_postprocess_bam.sh 19-HG001_hiseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-HG001_hiseq_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-HG001_novaseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-HG002_hiseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-HG002_novaseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-HG003_hiseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-HG003_novaseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG004_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG004_novaseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-HG004_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG004_novaseq_trimmed.bam 
 
-sbatch 7_postprocess_bam.sh 19-HG005_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG005_novaseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG006_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG006_novaseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG007_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-HG007_novaseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-HG005_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG005_novaseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG006_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG006_novaseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG007_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-HG007_novaseq_trimmed.bam 
 
-sbatch 7_postprocess_bam.sh 19-NA12891_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-NA12891_novaseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-NA12892_hiseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-NA12892_novaseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-NA12891_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-NA12891_novaseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-NA12892_hiseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-NA12892_novaseq_trimmed.bam 
+
+sbatch 7_postprocess_bam.sh 19-hcc1187-bl_hiseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-hcc1187-bl_novaseq_trimmed.bam
 
 8. Filter trimmed BAMs by mapping quality (60), removing reads not in proper pairs, or fail sec/supp alignments/are duplicates/indels
 sbatch 8_aggressive_filter.sh 19-km12_hiseq_postprocessed.bam 
@@ -211,7 +231,7 @@ sbatch 8_aggressive_filter.sh 19-u2os_novaseq2_postprocessed.bam
 sbatch 8_aggressive_filter.sh na12878_hiseq_chr19_postprocessed.bam
 sbatch 8_aggressive_filter.sh na12878_novaseqx_chr19_postprocessed.bam
 
-sbatch 8_aggressive_filter.sh 19-HG001_hiseq_postprocessed.bam
+sbatch 8_aggressive_filter.sh 19-HG001_hiseq_postprocessed.bam 
 sbatch 8_aggressive_filter.sh 19-HG001_novaseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-HG002_hiseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-HG002_novaseq_postprocessed.bam
@@ -225,12 +245,15 @@ sbatch 8_aggressive_filter.sh 19-HG005_novaseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-HG006_hiseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-HG006_novaseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-HG007_hiseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-HG007_novaseq_postprocessed.bam
+sbatch 8_aggressive_filter.sh 19-HG007_novaseq_postprocessed.bam 
 
-sbatch 8_aggressive_filter.sh 19-NA12891_hiseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-NA12891_novaseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-NA12892_hiseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-NA12892_novaseq_postprocessed.bam
+sbatch 8_aggressive_filter.sh 19-NA12891_hiseq_postprocessed.bam 
+sbatch 8_aggressive_filter.sh 19-NA12891_novaseq_postprocessed.bam 
+sbatch 8_aggressive_filter.sh 19-NA12892_hiseq_postprocessed.bam 
+sbatch 8_aggressive_filter.sh 19-NA12892_novaseq_postprocessed.bam 
+
+sbatch 8_aggressive_filter.sh 19-hcc1187-bl_hiseq_postprocessed.bam
+sbatch 8_aggressive_filter.sh 19-hcc1187-bl_novaseq_postprocessed.bam
 
 9. Pile up & call (choose script as per ref genome grch37/hg38)
 sbatch 9_mpileup_hg38.sh 19-km12_hiseq_finally_filtered.bam 
@@ -260,11 +283,13 @@ sbatch 9_mpileup_hg38.sh 19-HG006_novaseq_finally_filtered.bam
 sbatch 9_mpileup_hg38.sh 19-HG007_hiseq_finally_filtered.bam 
 sbatch 9_mpileup_hg38.sh 19-HG007_novaseq_finally_filtered.bam 
 
-sbatch 9_mpileup_hg38.sh 19-NA12891_hiseq_finally_filtered.bam
-sbatch 9_mpileup_hg38.sh 19-NA12891_novaseq_finally_filtered.bam
-sbatch 9_mpileup_hg38.sh 19-NA12892_hiseq_finally_filtered.bam
-sbatch 9_mpileup_hg38.sh 19-NA12892_novaseq_finally_filtered.bam
+sbatch 9_mpileup_hg38.sh 19-NA12891_hiseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-NA12891_novaseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-NA12892_hiseq_finally_filtered.bam 
+sbatch 9_mpileup_hg38.sh 19-NA12892_novaseq_finally_filtered.bam 
 
+sbatch 9_mpileup_hg38.sh 19-hcc1187-bl_hiseq_finally_filtered.bam 14669590
+sbatch 9_mpileup_hg38.sh 19-hcc1187-bl_novaseq_finally_filtered.bam 14669591
 
 
 
