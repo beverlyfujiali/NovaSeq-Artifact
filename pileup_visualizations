@@ -18,6 +18,29 @@ sbatch 1_bcf_to_vcf.sh 19-u2os_novaseq2_finally_filtered.bcf-call
 sbatch 1_bcf_to_vcf.sh na12878_hiseq_chr19_finally_filtered.bcf-call 
 sbatch 1_bcf_to_vcf.sh na12878_novaseqx_chr19_finally_filtered.bcf-call 
 
+sbatch 1_bcf_to_vcf.sh 19-HG001_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG001_novaseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG002_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG002_novaseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG003_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG003_novaseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG004_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-HG004_novaseq_finally_filtered.bcf-call
+
+sbatch 1_bcf_to_vcf.sh 19-HG005_hiseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-HG005_novaseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-HG006_hiseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-HG006_novaseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-HG007_hiseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-HG007_novaseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-NA12891_hiseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-NA12891_novaseq_finally_filtered.bcf-call 
+sbatch 1_bcf_to_vcf.sh 19-NA12892_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-NA12892_novaseq_finally_filtered.bcf-call
+
+sbatch 1_bcf_to_vcf.sh 19-hcc1187-bl_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hcc1187-bl_novaseq_finally_filtered.bcf-call
+
 2. Parse VCF into 12 mutation categories
 sbatch 2_parse_only.sh 19-km12_hiseq_finally_filtered.vcf 
 sbatch 2_parse_only.sh 19-km12_novaseq_finally_filtered.vcf 
@@ -27,8 +50,32 @@ sbatch 2_parse_only.sh 19-u2os_hiseq_finally_filtered.vcf
 sbatch 2_parse_only.sh 19-u2os_novaseq1_finally_filtered.vcf 
 sbatch 2_parse_only.sh 19-u2os_novaseq2_finally_filtered.vcf 
 
-sbatch 2_parse_only.sh na12878_hiseq_chr19_finally_filtered.vcf 14629011
-sbatch 2_parse_only.sh na12878_novaseqx_chr19_finally_filtered.vcf 14629040
+sbatch 2_parse_only.sh na12878_hiseq_chr19_finally_filtered.vcf
+sbatch 2_parse_only.sh na12878_novaseqx_chr19_finally_filtered.vcf
+
+sbatch 2_parse_only.sh 19-HG001_hiseq_finally_filtered.vcf 14667674
+sbatch 2_parse_only.sh 19-HG001_novaseq_finally_filtered.vcf 14667676
+sbatch 2_parse_only.sh 19-HG002_hiseq_finally_filtered.vcf 14667677
+sbatch 2_parse_only.sh 19-HG002_novaseq_finally_filtered.vcf 14667679
+sbatch 2_parse_only.sh 19-HG003_hiseq_finally_filtered.vcf 14667680
+sbatch 2_parse_only.sh 19-HG003_novaseq_finally_filtered.vcf 14667681
+sbatch 2_parse_only.sh 19-HG004_hiseq_finally_filtered.vcf 14667682
+sbatch 2_parse_only.sh 19-HG004_hiseq_finally_filtered.vcf 14667683
+sbatch 2_parse_only.sh 19-HG004_novaseq_finally_filtered.vcf 14667684
+
+sbatch 2_parse_only.sh 19-HG005_hiseq_finally_filtered.vcf 14668832
+sbatch 2_parse_only.sh 19-HG005_novaseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-HG006_hiseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-HG006_novaseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-HG007_hiseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-HG007_novaseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-NA12891_hiseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-NA12891_novaseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-NA12892_hiseq_finally_filtered.vcf
+sbatch 2_parse_only.sh 19-NA12892_novaseq_finally_filtered.vcf 14668841
+
+sbatch 2_parse_only.sh 19-hcc1187-bl_hiseq_finally_filtered.vcf 14670073
+sbatch 2_parse_only.sh 19-hcc1187-bl_novaseq_finally_filtered.vcf 14670074
 
 2.5 Collapse into reverse complementaries
 cat 19-km12_hiseq_ac_mutations.vcf 19-km12_hiseq_tg_mutations.vcf > 19-km12_hiseq_tg_ac_mutations.vcf
@@ -87,12 +134,204 @@ cat na12878_hiseq_chr19_gt_mutations.vcf na12878_hiseq_chr19_ca_mutations.vcf > 
 cat na12878_hiseq_chr19_ga_mutations.vcf na12878_hiseq_chr19_ct_mutations.vcf > na12878_hiseq_chr19_ct_ga_mutations.vcf
 cat na12878_hiseq_chr19_gc_mutations.vcf na12878_hiseq_chr19_cg_mutations.vcf > na12878_hiseq_chr19_cg_gc_mutations.vcf
 
-cat na12878_novaseqx_chr19_ac_mutations.vcf na12878_novaseqx_chr19_tg_mutations.vcf > na12878_novaseqx_chr19_tg_ac_mutations.vcf
-cat na12878_novaseqx_chr19_at_mutations.vcf na12878_novaseqx_chr19_ta_mutations.vcf > na12878_novaseqx_chr19_ta_at_mutations.vcf
-cat na12878_novaseqx_chr19_ag_mutations.vcf na12878_novaseqx_chr19_tc_mutations.vcf > na12878_novaseqx_chr19_tc_ag_mutations.vcf
-cat na12878_novaseqx_chr19_gt_mutations.vcf na12878_novaseqx_chr19_ca_mutations.vcf > na12878_novaseqx_chr19_ca_gt_mutations.vcf
-cat na12878_novaseqx_chr19_ga_mutations.vcf na12878_novaseqx_chr19_ct_mutations.vcf > na12878_novaseqx_chr19_ct_ga_mutations.vcf
-cat na12878_novaseqx_chr19_gc_mutations.vcf na12878_novaseqx_chr19_cg_mutations.vcf > na12878_novaseqx_chr19_cg_gc_mutations.vcf
+--- 11 August ---
+
+mv 19-HG001* hg001
+cd hg001
+mkdir hg001_hiseq
+mv 19-HG001_hiseq* hg001_hiseq
+cd hg001_hiseq
+cat 19-HG001_hiseq_ac_mutations.vcf 19-HG001_hiseq_tg_mutations.vcf > 19-HG001_hiseq_tg_ac_mutations.vcf
+cat 19-HG001_hiseq_at_mutations.vcf 19-HG001_hiseq_ta_mutations.vcf > 19-HG001_hiseq_ta_at_mutations.vcf
+cat 19-HG001_hiseq_ag_mutations.vcf 19-HG001_hiseq_tc_mutations.vcf > 19-HG001_hiseq_tc_ag_mutations.vcf
+cat 19-HG001_hiseq_gt_mutations.vcf 19-HG001_hiseq_ca_mutations.vcf > 19-HG001_hiseq_ca_gt_mutations.vcf
+cat 19-HG001_hiseq_ga_mutations.vcf 19-HG001_hiseq_ct_mutations.vcf > 19-HG001_hiseq_ct_ga_mutations.vcf
+cat 19-HG001_hiseq_gc_mutations.vcf 19-HG001_hiseq_cg_mutations.vcf > 19-HG001_hiseq_cg_gc_mutations.vcf
+
+cd ..
+mkdir hg001_novaseq
+mv 19-HG001_novaseq* hg001_novaseq
+cd hg001_novaseq
+cat 19-HG001_novaseq_ac_mutations.vcf 19-HG001_novaseq_tg_mutations.vcf > 19-HG001_novaseq_tg_ac_mutations.vcf
+cat 19-HG001_novaseq_at_mutations.vcf 19-HG001_novaseq_ta_mutations.vcf > 19-HG001_novaseq_ta_at_mutations.vcf
+cat 19-HG001_novaseq_ag_mutations.vcf 19-HG001_novaseq_tc_mutations.vcf > 19-HG001_novaseq_tc_ag_mutations.vcf
+cat 19-HG001_novaseq_gt_mutations.vcf 19-HG001_novaseq_ca_mutations.vcf > 19-HG001_novaseq_ca_gt_mutations.vcf
+cat 19-HG001_novaseq_ga_mutations.vcf 19-HG001_novaseq_ct_mutations.vcf > 19-HG001_novaseq_ct_ga_mutations.vcf
+cat 19-HG001_novaseq_gc_mutations.vcf 19-HG001_novaseq_cg_mutations.vcf > 19-HG001_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG002* hg002
+cd hg002
+mkdir hg002_hiseq
+mv 19-HG002_hiseq* hg002_hiseq
+cd hg002_hiseq
+cat 19-HG002_hiseq_ac_mutations.vcf 19-HG002_hiseq_tg_mutations.vcf > 19-HG002_hiseq_tg_ac_mutations.vcf
+cat 19-HG002_hiseq_at_mutations.vcf 19-HG002_hiseq_ta_mutations.vcf > 19-HG002_hiseq_ta_at_mutations.vcf
+cat 19-HG002_hiseq_ag_mutations.vcf 19-HG002_hiseq_tc_mutations.vcf > 19-HG002_hiseq_tc_ag_mutations.vcf
+cat 19-HG002_hiseq_gt_mutations.vcf 19-HG002_hiseq_ca_mutations.vcf > 19-HG002_hiseq_ca_gt_mutations.vcf
+cat 19-HG002_hiseq_ga_mutations.vcf 19-HG002_hiseq_ct_mutations.vcf > 19-HG002_hiseq_ct_ga_mutations.vcf
+cat 19-HG002_hiseq_gc_mutations.vcf 19-HG002_hiseq_cg_mutations.vcf > 19-HG002_hiseq_cg_gc_mutations.vcf
+
+cd ..
+mkdir hg002_novaseq
+mv 19-HG002_novaseq* hg002_novaseq
+cd hg002_novaseq
+cat 19-HG002_novaseq_ac_mutations.vcf 19-HG002_novaseq_tg_mutations.vcf > 19-HG002_novaseq_tg_ac_mutations.vcf
+cat 19-HG002_novaseq_at_mutations.vcf 19-HG002_novaseq_ta_mutations.vcf > 19-HG002_novaseq_ta_at_mutations.vcf
+cat 19-HG002_novaseq_ag_mutations.vcf 19-HG002_novaseq_tc_mutations.vcf > 19-HG002_novaseq_tc_ag_mutations.vcf
+cat 19-HG002_novaseq_gt_mutations.vcf 19-HG002_novaseq_ca_mutations.vcf > 19-HG002_novaseq_ca_gt_mutations.vcf
+cat 19-HG002_novaseq_ga_mutations.vcf 19-HG002_novaseq_ct_mutations.vcf > 19-HG002_novaseq_ct_ga_mutations.vcf
+cat 19-HG002_novaseq_gc_mutations.vcf 19-HG002_novaseq_cg_mutations.vcf > 19-HG002_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG003* hg003
+cd hg003
+mkdir hg003_hiseq
+mv 19-HG003_hiseq* hg003_hiseq
+cd hg003_hiseq
+cat 19-HG003_hiseq_ac_mutations.vcf 19-HG003_hiseq_tg_mutations.vcf > 19-HG003_hiseq_tg_ac_mutations.vcf
+cat 19-HG003_hiseq_at_mutations.vcf 19-HG003_hiseq_ta_mutations.vcf > 19-HG003_hiseq_ta_at_mutations.vcf
+cat 19-HG003_hiseq_ag_mutations.vcf 19-HG003_hiseq_tc_mutations.vcf > 19-HG003_hiseq_tc_ag_mutations.vcf
+cat 19-HG003_hiseq_gt_mutations.vcf 19-HG003_hiseq_ca_mutations.vcf > 19-HG003_hiseq_ca_gt_mutations.vcf
+cat 19-HG003_hiseq_ga_mutations.vcf 19-HG003_hiseq_ct_mutations.vcf > 19-HG003_hiseq_ct_ga_mutations.vcf
+cat 19-HG003_hiseq_gc_mutations.vcf 19-HG003_hiseq_cg_mutations.vcf > 19-HG003_hiseq_cg_gc_mutations.vcf
+
+cd ..
+mkdir hg003_novaseq
+mv 19-HG003_novaseq* hg003_novaseq
+cd hg003_novaseq
+cat 19-HG003_novaseq_ac_mutations.vcf 19-HG003_novaseq_tg_mutations.vcf > 19-HG003_novaseq_tg_ac_mutations.vcf
+cat 19-HG003_novaseq_at_mutations.vcf 19-HG003_novaseq_ta_mutations.vcf > 19-HG003_novaseq_ta_at_mutations.vcf
+cat 19-HG003_novaseq_ag_mutations.vcf 19-HG003_novaseq_tc_mutations.vcf > 19-HG003_novaseq_tc_ag_mutations.vcf
+cat 19-HG003_novaseq_gt_mutations.vcf 19-HG003_novaseq_ca_mutations.vcf > 19-HG003_novaseq_ca_gt_mutations.vcf
+cat 19-HG003_novaseq_ga_mutations.vcf 19-HG003_novaseq_ct_mutations.vcf > 19-HG003_novaseq_ct_ga_mutations.vcf
+cat 19-HG003_novaseq_gc_mutations.vcf 19-HG003_novaseq_cg_mutations.vcf > 19-HG003_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG004* hg004
+cd hg004
+mkdir hg004_hiseq
+mv 19-HG004_hiseq* hg004_hiseq
+cd hg004_hiseq
+cat 19-HG004_hiseq_ac_mutations.vcf 19-HG004_hiseq_tg_mutations.vcf > 19-HG004_hiseq_tg_ac_mutations.vcf
+cat 19-HG004_hiseq_at_mutations.vcf 19-HG004_hiseq_ta_mutations.vcf > 19-HG004_hiseq_ta_at_mutations.vcf
+cat 19-HG004_hiseq_ag_mutations.vcf 19-HG004_hiseq_tc_mutations.vcf > 19-HG004_hiseq_tc_ag_mutations.vcf
+cat 19-HG004_hiseq_gt_mutations.vcf 19-HG004_hiseq_ca_mutations.vcf > 19-HG004_hiseq_ca_gt_mutations.vcf
+cat 19-HG004_hiseq_ga_mutations.vcf 19-HG004_hiseq_ct_mutations.vcf > 19-HG004_hiseq_ct_ga_mutations.vcf
+cat 19-HG004_hiseq_gc_mutations.vcf 19-HG004_hiseq_cg_mutations.vcf > 19-HG004_hiseq_cg_gc_mutations.vcf
+
+mkdir hg004_novaseq
+mv 19-HG004_novaseq* hg004_novaseq
+cat 19-HG004_novaseq_ac_mutations.vcf 19-HG004_novaseq_tg_mutations.vcf > 19-HG004_novaseq_tg_ac_mutations.vcf
+cat 19-HG004_novaseq_at_mutations.vcf 19-HG004_novaseq_ta_mutations.vcf > 19-HG004_novaseq_ta_at_mutations.vcf
+cat 19-HG004_novaseq_ag_mutations.vcf 19-HG004_novaseq_tc_mutations.vcf > 19-HG004_novaseq_tc_ag_mutations.vcf
+cat 19-HG004_novaseq_gt_mutations.vcf 19-HG004_novaseq_ca_mutations.vcf > 19-HG004_novaseq_ca_gt_mutations.vcf
+cat 19-HG004_novaseq_ga_mutations.vcf 19-HG004_novaseq_ct_mutations.vcf > 19-HG004_novaseq_ct_ga_mutations.vcf
+cat 19-HG004_novaseq_gc_mutations.vcf 19-HG004_novaseq_cg_mutations.vcf > 19-HG004_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG005* hg005
+mkdir hg005_hiseq
+mv 19-HG005_hiseq* hg005_hiseq
+cat 19-HG005_hiseq_ac_mutations.vcf 19-HG005_hiseq_tg_mutations.vcf > 19-HG005_hiseq_tg_ac_mutations.vcf
+cat 19-HG005_hiseq_at_mutations.vcf 19-HG005_hiseq_ta_mutations.vcf > 19-HG005_hiseq_ta_at_mutations.vcf
+cat 19-HG005_hiseq_ag_mutations.vcf 19-HG005_hiseq_tc_mutations.vcf > 19-HG005_hiseq_tc_ag_mutations.vcf
+cat 19-HG005_hiseq_gt_mutations.vcf 19-HG005_hiseq_ca_mutations.vcf > 19-HG005_hiseq_ca_gt_mutations.vcf
+cat 19-HG005_hiseq_ga_mutations.vcf 19-HG005_hiseq_ct_mutations.vcf > 19-HG005_hiseq_ct_ga_mutations.vcf
+cat 19-HG005_hiseq_gc_mutations.vcf 19-HG005_hiseq_cg_mutations.vcf > 19-HG005_hiseq_cg_gc_mutations.vcf
+
+mkdir hg005_novaseq
+mv 19-HG005_novaseq* hg005_novaseq
+cat 19-HG005_novaseq_ac_mutations.vcf 19-HG005_novaseq_tg_mutations.vcf > 19-HG005_novaseq_tg_ac_mutations.vcf
+cat 19-HG005_novaseq_at_mutations.vcf 19-HG005_novaseq_ta_mutations.vcf > 19-HG005_novaseq_ta_at_mutations.vcf
+cat 19-HG005_novaseq_ag_mutations.vcf 19-HG005_novaseq_tc_mutations.vcf > 19-HG005_novaseq_tc_ag_mutations.vcf
+cat 19-HG005_novaseq_gt_mutations.vcf 19-HG005_novaseq_ca_mutations.vcf > 19-HG005_novaseq_ca_gt_mutations.vcf
+cat 19-HG005_novaseq_ga_mutations.vcf 19-HG005_novaseq_ct_mutations.vcf > 19-HG005_novaseq_ct_ga_mutations.vcf
+cat 19-HG005_novaseq_gc_mutations.vcf 19-HG005_novaseq_cg_mutations.vcf > 19-HG005_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG006* hg006
+mkdir hg006_hiseq
+mv 19-HG006_hiseq* hg006_hiseq
+cat 19-HG006_hiseq_ac_mutations.vcf 19-HG006_hiseq_tg_mutations.vcf > 19-HG006_hiseq_tg_ac_mutations.vcf
+cat 19-HG006_hiseq_at_mutations.vcf 19-HG006_hiseq_ta_mutations.vcf > 19-HG006_hiseq_ta_at_mutations.vcf
+cat 19-HG006_hiseq_ag_mutations.vcf 19-HG006_hiseq_tc_mutations.vcf > 19-HG006_hiseq_tc_ag_mutations.vcf
+cat 19-HG006_hiseq_gt_mutations.vcf 19-HG006_hiseq_ca_mutations.vcf > 19-HG006_hiseq_ca_gt_mutations.vcf
+cat 19-HG006_hiseq_ga_mutations.vcf 19-HG006_hiseq_ct_mutations.vcf > 19-HG006_hiseq_ct_ga_mutations.vcf
+cat 19-HG006_hiseq_gc_mutations.vcf 19-HG006_hiseq_cg_mutations.vcf > 19-HG006_hiseq_cg_gc_mutations.vcf
+
+mkdir hg006_novaseq
+mv 19-HG006_novaseq* hg006_novaseq
+cat 19-HG006_novaseq_ac_mutations.vcf 19-HG006_novaseq_tg_mutations.vcf > 19-HG006_novaseq_tg_ac_mutations.vcf
+cat 19-HG006_novaseq_at_mutations.vcf 19-HG006_novaseq_ta_mutations.vcf > 19-HG006_novaseq_ta_at_mutations.vcf
+cat 19-HG006_novaseq_ag_mutations.vcf 19-HG006_novaseq_tc_mutations.vcf > 19-HG006_novaseq_tc_ag_mutations.vcf
+cat 19-HG006_novaseq_gt_mutations.vcf 19-HG006_novaseq_ca_mutations.vcf > 19-HG006_novaseq_ca_gt_mutations.vcf
+cat 19-HG006_novaseq_ga_mutations.vcf 19-HG006_novaseq_ct_mutations.vcf > 19-HG006_novaseq_ct_ga_mutations.vcf
+cat 19-HG006_novaseq_gc_mutations.vcf 19-HG006_novaseq_cg_mutations.vcf > 19-HG006_novaseq_cg_gc_mutations.vcf
+
+mv 19-HG007* hg007
+mkdir hg007_hiseq
+mv 19-HG007_hiseq* hg007_hiseq
+cat 19-HG007_hiseq_ac_mutations.vcf 19-HG007_hiseq_tg_mutations.vcf > 19-HG007_hiseq_tg_ac_mutations.vcf
+cat 19-HG007_hiseq_at_mutations.vcf 19-HG007_hiseq_ta_mutations.vcf > 19-HG007_hiseq_ta_at_mutations.vcf
+cat 19-HG007_hiseq_ag_mutations.vcf 19-HG007_hiseq_tc_mutations.vcf > 19-HG007_hiseq_tc_ag_mutations.vcf
+cat 19-HG007_hiseq_gt_mutations.vcf 19-HG007_hiseq_ca_mutations.vcf > 19-HG007_hiseq_ca_gt_mutations.vcf
+cat 19-HG007_hiseq_ga_mutations.vcf 19-HG007_hiseq_ct_mutations.vcf > 19-HG007_hiseq_ct_ga_mutations.vcf
+cat 19-HG007_hiseq_gc_mutations.vcf 19-HG007_hiseq_cg_mutations.vcf > 19-HG007_hiseq_cg_gc_mutations.vcf
+
+mkdir hg007_novaseq
+mv 19-HG007_novaseq* hg007_novaseq
+cat 19-HG007_novaseq_ac_mutations.vcf 19-HG007_novaseq_tg_mutations.vcf > 19-HG007_novaseq_tg_ac_mutations.vcf
+cat 19-HG007_novaseq_at_mutations.vcf 19-HG007_novaseq_ta_mutations.vcf > 19-HG007_novaseq_ta_at_mutations.vcf
+cat 19-HG007_novaseq_ag_mutations.vcf 19-HG007_novaseq_tc_mutations.vcf > 19-HG007_novaseq_tc_ag_mutations.vcf
+cat 19-HG007_novaseq_gt_mutations.vcf 19-HG007_novaseq_ca_mutations.vcf > 19-HG007_novaseq_ca_gt_mutations.vcf
+cat 19-HG007_novaseq_ga_mutations.vcf 19-HG007_novaseq_ct_mutations.vcf > 19-HG007_novaseq_ct_ga_mutations.vcf
+cat 19-HG007_novaseq_gc_mutations.vcf 19-HG007_novaseq_cg_mutations.vcf > 19-HG007_novaseq_cg_gc_mutations.vcf
+
+mv 19-NA12891* na12891
+mkdir na12891_hiseq
+mv 19-NA12891_hiseq* na12891_hiseq
+cat 19-NA12891_hiseq_ac_mutations.vcf 19-NA12891_hiseq_tg_mutations.vcf > 19-NA12891_hiseq_tg_ac_mutations.vcf
+cat 19-NA12891_hiseq_at_mutations.vcf 19-NA12891_hiseq_ta_mutations.vcf > 19-NA12891_hiseq_ta_at_mutations.vcf
+cat 19-NA12891_hiseq_ag_mutations.vcf 19-NA12891_hiseq_tc_mutations.vcf > 19-NA12891_hiseq_tc_ag_mutations.vcf
+cat 19-NA12891_hiseq_gt_mutations.vcf 19-NA12891_hiseq_ca_mutations.vcf > 19-NA12891_hiseq_ca_gt_mutations.vcf
+cat 19-NA12891_hiseq_ga_mutations.vcf 19-NA12891_hiseq_ct_mutations.vcf > 19-NA12891_hiseq_ct_ga_mutations.vcf
+cat 19-NA12891_hiseq_gc_mutations.vcf 19-NA12891_hiseq_cg_mutations.vcf > 19-NA12891_hiseq_cg_gc_mutations.vcf
+
+mkdir na12891_novaseq
+mv 19-NA12891_novaseq* na12781_novaseq
+mv 19-NA12892* na12892
+mkdir na12892_hiseq
+mv 19-NA12892_hiseq* na12892_hiseq
+cat 19-NA12892_hiseq_ac_mutations.vcf 19-NA12892_hiseq_tg_mutations.vcf > 19-NA12892_hiseq_tg_ac_mutations.vcf
+cat 19-NA12892_hiseq_at_mutations.vcf 19-NA12892_hiseq_ta_mutations.vcf > 19-NA12892_hiseq_ta_at_mutations.vcf
+cat 19-NA12892_hiseq_ag_mutations.vcf 19-NA12892_hiseq_tc_mutations.vcf > 19-NA12892_hiseq_tc_ag_mutations.vcf
+cat 19-NA12892_hiseq_gt_mutations.vcf 19-NA12892_hiseq_ca_mutations.vcf > 19-NA12892_hiseq_ca_gt_mutations.vcf
+cat 19-NA12892_hiseq_ga_mutations.vcf 19-NA12892_hiseq_ct_mutations.vcf > 19-NA12892_hiseq_ct_ga_mutations.vcf
+cat 19-NA12892_hiseq_gc_mutations.vcf 19-NA12892_hiseq_cg_mutations.vcf > 19-NA12892_hiseq_cg_gc_mutations.vcf
+
+mkdir na12892_novaseq
+mv 19-NA12892_novaseq* na12892_novaseq
+cat 19-NA12892_novaseq_ac_mutations.vcf 19-NA12892_novaseq_tg_mutations.vcf > 19-NA12892_novaseq_tg_ac_mutations.vcf
+cat 19-NA12892_novaseq_at_mutations.vcf 19-NA12892_novaseq_ta_mutations.vcf > 19-NA12892_novaseq_ta_at_mutations.vcf
+cat 19-NA12892_novaseq_ag_mutations.vcf 19-NA12892_novaseq_tc_mutations.vcf > 19-NA12892_novaseq_tc_ag_mutations.vcf
+cat 19-NA12892_novaseq_gt_mutations.vcf 19-NA12892_novaseq_ca_mutations.vcf > 19-NA12892_novaseq_ca_gt_mutations.vcf
+cat 19-NA12892_novaseq_ga_mutations.vcf 19-NA12892_novaseq_ct_mutations.vcf > 19-NA12892_novaseq_ct_ga_mutations.vcf
+cat 19-NA12892_novaseq_gc_mutations.vcf 19-NA12892_novaseq_cg_mutations.vcf > 19-NA12892_novaseq_cg_gc_mutations.vcf
+
+mv 19-hcc1187-bl* hcc1187-bl
+mkdir hcc1187-bl_hiseq
+mv 19-hcc1187-bl_hiseq* hcc1187-bl_hiseq
+cat 19-hcc1187-bl_hiseq_ac_mutations.vcf 19-hcc1187-bl_hiseq_tg_mutations.vcf > 19-hcc1187-bl_hiseq_tg_ac_mutations.vcf
+cat 19-hcc1187-bl_hiseq_at_mutations.vcf 19-hcc1187-bl_hiseq_ta_mutations.vcf > 19-hcc1187-bl_hiseq_ta_at_mutations.vcf
+cat 19-hcc1187-bl_hiseq_ag_mutations.vcf 19-hcc1187-bl_hiseq_tc_mutations.vcf > 19-hcc1187-bl_hiseq_tc_ag_mutations.vcf
+cat 19-hcc1187-bl_hiseq_gt_mutations.vcf 19-hcc1187-bl_hiseq_ca_mutations.vcf > 19-hcc1187-bl_hiseq_ca_gt_mutations.vcf
+cat 19-hcc1187-bl_hiseq_ga_mutations.vcf 19-hcc1187-bl_hiseq_ct_mutations.vcf > 19-hcc1187-bl_hiseq_ct_ga_mutations.vcf
+cat 19-hcc1187-bl_hiseq_gc_mutations.vcf 19-hcc1187-bl_hiseq_cg_mutations.vcf > 19-hcc1187-bl_hiseq_cg_gc_mutations.vcf
+
+mkdir hcc1187-bl_novaseq
+mv 19-hcc1187-bl_novaseq* hcc1187-bl_novaseq
+cat 19-hcc1187-bl_novaseq_ac_mutations.vcf 19-hcc1187-bl_novaseq_tg_mutations.vcf > 19-hcc1187-bl_novaseq_tg_ac_mutations.vcf
+cat 19-hcc1187-bl_novaseq_at_mutations.vcf 19-hcc1187-bl_novaseq_ta_mutations.vcf > 19-hcc1187-bl_novaseq_ta_at_mutations.vcf
+cat 19-hcc1187-bl_novaseq_ag_mutations.vcf 19-hcc1187-bl_novaseq_tc_mutations.vcf > 19-hcc1187-bl_novaseq_tc_ag_mutations.vcf
+cat 19-hcc1187-bl_novaseq_gt_mutations.vcf 19-hcc1187-bl_novaseq_ca_mutations.vcf > 19-hcc1187-bl_novaseq_ca_gt_mutations.vcf
+cat 19-hcc1187-bl_novaseq_ga_mutations.vcf 19-hcc1187-bl_novaseq_ct_mutations.vcf > 19-hcc1187-bl_novaseq_ct_ga_mutations.vcf
+cat 19-hcc1187-bl_novaseq_gc_mutations.vcf 19-hcc1187-bl_novaseq_cg_mutations.vcf > 19-hcc1187-bl_novaseq_cg_gc_mutations.vcf
 
 3. Take low depth mutations (range from DP=1 to 3)
 
@@ -195,18 +434,18 @@ def extract_dp_values(vcf_filename):
     return dp_values
 
 # Read DP values from two VCF files
-dp_values_vcf1 = extract_dp_values("na12878_novaseqx_chr19_tg_ac_mutations.vcf")
-dp_values_vcf2 = extract_dp_values("na12878_hiseq_chr19_tg_ac_mutations.vcf")
+dp_values_vcf1 = extract_dp_values("km12_novaseq/19-km12_novaseq_tg_ac_mutations.vcf")
+dp_values_vcf2 = extract_dp_values("km12_hiseq/19-km12_hiseq_tg_ac_mutations.vcf")
 
 # Create histograms
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1, bins=50, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2, bins=50, kde=True, color="red", label="HiSeq")
+sns.histplot(dp_values_vcf1, bins=50, kde=True, color="blue", label="NovaSeq", stat="probability")
+sns.histplot(dp_values_vcf2, bins=50, kde=True, color="red", label="HiSeq", stat="probability")
 plt.xlabel("Read Depth (DP)")
-plt.ylabel("Frequency")
-plt.title("Read Depth Distribution")
+plt.ylabel("Density")
+plt.title("Read Depth Distribution (Normalized)")
 plt.legend()
-plt.savefig("19-na12878_TG_RDs.png", dpi=300)
+plt.savefig("19-KM12_TG_RDs_normalized.png", dpi=300)
 plt.show()
 
 # Check at which read depth is highest at. 
@@ -225,4 +464,437 @@ bash km12_hiseq/3_take_by_dp.sh km12_novaseq/19-km12_novaseq 5
 cat km12_hiseq/19-km12_hiseq_dp_5.csv km12_novaseq/19-km12_novaseq_dp_5.csv > dp5.csv
 
 
-4. Examine trinucleotide contexts of T>G excesses on KM12 and HCT116, at particular DP e.g. DP of 4-5 (HiSeq and NovaSeq on the same chart)
+5. Examine trinucleotide contexts of T>G excesses on KM12 and HCT116, then U2OS, NA12878 at modal DP e.g. DP of 4-5 (HiSeq and NovaSeq on the same chart)
+
+conda activate SigProfiler
+
+Mode of DP for T>G alt-allele reporting sites on NovaSeq (python find_dp_mode.py sample_TG_AC.vcf)
+- KM12: 
+    - HiSeq: 21 (count = 875)
+    - NovaSeq: 5 (count = 943)
+- HCT116: 
+    - HiSeq: 30 (count = 859)
+    - NovaSeq: 4 (count = 997)
+- U2OS: 
+    - HiSeq: 15 (count = 760)
+    - NovaSeq: 16 (count = 396)
+- NA12878: 
+    - HiSeq: 18 (count = 1830)
+    - NovaSeq: 43 (count = 1351)
+- HCC1395: 
+    - HiSeq: 129 (count = 681)
+    - NovaSeq: 56 (count = 362)
+- HCC1395BL: 
+    - HiSeq: 103 (count = 1320)
+    - NovaSeq: 35 (count = 531)
+- HCC1187BL:
+    - HiSeq:
+    - NovaSeq:
+- NA12891:
+    - HiSeq:
+    - NovaSeq:
+- NA12892:
+    - HiSeq:
+    - NovaSeq:
+- HG001:
+    - HiSeq:
+    - NovaSeq:
+- HG002:
+    - HiSeq:
+    - NovaSeq:
+- HG003:
+    - HiSeq:
+    - NovaSeq:
+- HG004:
+    - HiSeq:
+    - NovaSeq:
+- HG005:
+    - HiSeq:
+    - NovaSeq:
+- HG006:
+    - HiSeq:
+    - NovaSeq:
+- HG007:
+    - HiSeq:
+    - NovaSeq:
+
+///
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+import sys
+
+# Function to extract DP values from a VCF file
+def extract_dp_values(vcf_filename):
+    dp_values = []
+    with open(vcf_filename, "r") as f:
+        for line in f:
+            if line.startswith("#"):
+                continue  # Skip header lines
+            fields = line.strip().split("\t")
+            info_field = fields[7]
+            for item in info_field.split(";"):
+                key, value = item.split("=")
+                if key == "DP":
+                    dp_values.append(int(value))
+    return dp_values
+
+# Read DP values from two VCF files
+input_vcf_filename = sys.argv[1]
+dp_values_vcf1 = extract_dp_values(input_vcf_filename)
+mode_vcf1 = stats.mode(dp_values_vcf1).mode[0]
+print(input_vcf_filename, mode_vcf1)
+///
+
+Genomic NTT bed creation
+# generate chr19_hg38.fasta: 
+samtools faidx /n/data1/hms/dbmi/park/SOFTWARE/REFERENCE/hg38/Homo_sapiens_assembly38.fasta chr19 > chr19_hg38.fasta
+
+# generate bed files with appropriate trinucleotide contexts (cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38) for hg38
+bash submit_jobs.sh
+    - patterns.txt
+    - find_codon_positions.sh
+        - find_codon_positions.py
+            - chr19_hg38.fasta
+
+import sys 
+from Bio import SeqIO
+
+def find_codon_positions(fasta_file, pattern, reverse_complement, output_file):
+    # Open the BED file for writing
+    with open(output_file, "w") as f:
+        # Parse the chromosome 19 sequence from the FASTA file
+        for record in SeqIO.parse(fasta_file, "fasta"):
+            sequence = str(record.seq)
+            for i in range(len(sequence) - len(pattern) + 1): 
+                codon = sequence[i:i + len(pattern)]
+                if codon in (pattern, reverse_complement):
+                    f.write(f"{record.id}\t{i}\t{i + len(pattern)}\n")
+
+find_codon_positions("chr19_hg38.fasta", "ATA", "TAT", "chr19_ATA_TAT.bed")
+find_codon_positions("chr19_hg38.fasta", "ATC", "GAT", "chr19_ATC_GAT.bed")
+find_codon_positions("chr19_hg38.fasta", "ATG", "CAT", "chr19_ATG_CAT.bed")
+find_codon_positions("chr19_hg38.fasta", "ATT", "AAT", "chr19_ATT_AAT.bed")
+
+find_codon_positions("chr19_hg38.fasta", "CTA", "TAG", "chr19_CTA_TAG.bed")
+find_codon_positions("chr19_hg38.fasta", "CTC", "GAG", "chr19_CTC_GAG.bed")
+find_codon_positions("chr19_hg38.fasta", "CTG", "CAG", "chr19_CTG_CAG.bed")
+find_codon_positions("chr19_hg38.fasta", "CTT", "AAG", "chr19_CTT_AAG.bed")
+
+find_codon_positions("chr19_hg38.fasta", "GTA", "TAC", "chr19_GTA_TAC.bed")
+find_codon_positions("chr19_hg38.fasta", "GTC", "GAC", "chr19_GTC_GAC.bed")
+find_codon_positions("chr19_hg38.fasta", "GTG", "CAC", "chr19_GTG_CAC.bed")
+find_codon_positions("chr19_hg38.fasta", "GTT", "AAC", "chr19_GTT_AAC.bed")
+
+find_codon_positions("chr19_hg38.fasta", "TTA", "TAA", "chr19_TTA_TAA.bed")
+find_codon_positions("chr19_hg38.fasta", "TTC", "GAA", "chr19_TTC_GAA.bed")
+find_codon_positions("chr19_hg38.fasta", "TTG", "CAA", "chr19_TTG_CAA.bed")
+find_codon_positions("chr19_hg38.fasta", "TTT", "AAA", "chr19_TTT_AAA.bed")
+
+----
+
+KM12: (NovaSeq Mode = 5)
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_novaseq
+bash 3_take_by_dp.sh 19-km12_novaseq 5 
+sort -k2,2n 19-km12_novaseq_tg_ac_mutations.vcf_dp_5.vcf > tg_ac_5.vcf
+bgzip tg_ac_5.vcf
+tabix -p vcf tg_ac_5.vcf.gz
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATA_TAT.bed tg_ac_5.vcf.gz tg_ata_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATC_GAT.bed tg_ac_5.vcf.gz tg_atc_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATG_CAT.bed tg_ac_5.vcf.gz tg_atg_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATT_AAT.bed tg_ac_5.vcf.gz tg_att_5.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTA_TAG.bed tg_ac_5.vcf.gz tg_cta_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTC_GAG.bed tg_ac_5.vcf.gz tg_ctc_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTG_CAG.bed tg_ac_5.vcf.gz tg_ctg_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTT_AAG.bed tg_ac_5.vcf.gz tg_ctt_5.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTA_TAC.bed tg_ac_5.vcf.gz tg_gta_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTC_GAC.bed tg_ac_5.vcf.gz tg_gtc_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTG_CAC.bed tg_ac_5.vcf.gz tg_gtg_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTT_AAC.bed tg_ac_5.vcf.gz tg_gtt_5.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTA_TAA.bed tg_ac_5.vcf.gz tg_tta_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTC_GAA.bed tg_ac_5.vcf.gz tg_ttc_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTG_CAA.bed tg_ac_5.vcf.gz tg_ttg_5.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTT_AAA.bed tg_ac_5.vcf.gz tg_ttt_5.vcf
+
+bash generate_16_channel.sh tg_ata_5.vcf "novaseq"
+bash generate_16_channel.sh tg_atc_5.vcf "novaseq"
+bash generate_16_channel.sh tg_atg_5.vcf "novaseq"
+bash generate_16_channel.sh tg_att_5.vcf "novaseq"
+bash generate_16_channel.sh tg_cta_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ctc_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ctg_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ctt_5.vcf "novaseq"
+bash generate_16_channel.sh tg_gta_5.vcf "novaseq"
+bash generate_16_channel.sh tg_gtc_5.vcf "novaseq"
+bash generate_16_channel.sh tg_gtg_5.vcf "novaseq"
+bash generate_16_channel.sh tg_gtt_5.vcf "novaseq"
+bash generate_16_channel.sh tg_tta_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ttc_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ttg_5.vcf "novaseq"
+bash generate_16_channel.sh tg_ttt_5.vcf "novaseq"
+
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_hiseq
+bash 3_take_by_dp.sh 19-km12_hiseq 5 
+sort -k2,2n 19-km12_hiseq_tg_ac_mutations.vcf_dp_5.vcf > tg_ac_5.vcf
+bgzip tg_ac_5.vcf
+tabix -p vcf tg_ac_5.vcf.gz
+
+bash generate_16_channel.sh tg_ata_5.vcf "hiseq"
+bash generate_16_channel.sh tg_atc_5.vcf "hiseq"
+bash generate_16_channel.sh tg_atg_5.vcf "hiseq"
+bash generate_16_channel.sh tg_att_5.vcf "hiseq"
+bash generate_16_channel.sh tg_cta_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ctc_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ctg_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ctt_5.vcf "hiseq"
+bash generate_16_channel.sh tg_gta_5.vcf "hiseq"
+bash generate_16_channel.sh tg_gtc_5.vcf "hiseq"
+bash generate_16_channel.sh tg_gtg_5.vcf "hiseq"
+bash generate_16_channel.sh tg_gtt_5.vcf "hiseq"
+bash generate_16_channel.sh tg_tta_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ttc_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ttg_5.vcf "hiseq"
+bash generate_16_channel.sh tg_ttt_5.vcf "hiseq"
+
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12
+cat /km12_hiseq/output_dataframe_16_tg.csv /km12_novaseq/output_dataframe_16_tg.csv > concatenated_5_support_16_channel_tg.csv
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Read the CSV file into a DataFrame with appropriate column labels
+column_labels = ["Trinucleotide Context", "Number of N[T>G]V Sites", "Platform"]
+df = pd.read_csv("16_tg_5.csv", names=column_labels)
+
+# Sort the DataFrame by alphabetical order of Number of Supporting Reads
+df = df.sort_values(by="Trinucleotide Context")
+
+# Reformat platform names to "NovaSeq" and "HiSeq"
+df["Platform"] = df["Platform"].map(lambda x: "NovaSeq" if x.lower() == "novaseq" else "HiSeq")
+df['Trinucleotide Context'] = df['Trinucleotide Context'].str.upper()
+
+# Define colors for the platforms
+colors = {"NovaSeq": "blue", "HiSeq": "red"}
+
+# Create the double bar plot using Seaborn
+plt.figure(figsize=(10, 6))
+ax = sns.barplot(
+    x="Trinucleotide Context",
+    y="Number of N[T>G]V Sites",
+    hue="Platform",
+    data=df,
+    palette=colors,
+)
+plt.xlabel("Trinucleotide Context of T>G Sites with 5 Reads")
+plt.ylabel("Number of N[T>G]V Sites")
+plt.title("Trinucleotide Contexts of 5-Read N[T>G]V Sites for HiSeq vs NovaSeq")
+plt.legend(title="Platform")
+plt.xticks(rotation=45, ha="right")
+
+# Add labels to each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f"{height}", (p.get_x() + p.get_width() / 2, height),
+                ha='center', va='bottom', fontsize=8)
+
+# Save the plot at dpi 300
+plt.savefig("tg_reporting_sites_16_channel_read_5.png", dpi=300)
+
+----
+
+HCT116 (NovaSeq)
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_novaseq
+bash 3_take_by_dp.sh 19-hct116_novaseq 4
+sort -k2,2n 19-hct116_novaseq_tg_ac_mutations.vcf_dp_4.vcf > tg_ac_4.vcf
+bgzip tg_ac_4.vcf
+tabix -p vcf tg_ac_4.vcf.gz
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATA_TAT.bed tg_ac_4.vcf.gz tg_ata_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATC_GAT.bed tg_ac_4.vcf.gz tg_atc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATG_CAT.bed tg_ac_4.vcf.gz tg_atg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATT_AAT.bed tg_ac_4.vcf.gz tg_att_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTA_TAG.bed tg_ac_4.vcf.gz tg_cta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTC_GAG.bed tg_ac_4.vcf.gz tg_ctc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTG_CAG.bed tg_ac_4.vcf.gz tg_ctg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTT_AAG.bed tg_ac_4.vcf.gz tg_ctt_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTA_TAC.bed tg_ac_4.vcf.gz tg_gta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTC_GAC.bed tg_ac_4.vcf.gz tg_gtc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTG_CAC.bed tg_ac_4.vcf.gz tg_gtg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTT_AAC.bed tg_ac_4.vcf.gz tg_gtt_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTA_TAA.bed tg_ac_4.vcf.gz tg_tta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTC_GAA.bed tg_ac_4.vcf.gz tg_ttc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTG_CAA.bed tg_ac_4.vcf.gz tg_ttg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTT_AAA.bed tg_ac_4.vcf.gz tg_ttt_4.vcf
+
+bash generate_16_channel.sh tg_ata_4.vcf "novaseq"
+bash generate_16_channel.sh tg_atc_4.vcf "novaseq"
+bash generate_16_channel.sh tg_atg_4.vcf "novaseq"
+bash generate_16_channel.sh tg_att_4.vcf "novaseq"
+bash generate_16_channel.sh tg_cta_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ctc_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ctg_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ctt_4.vcf "novaseq"
+bash generate_16_channel.sh tg_gta_4.vcf "novaseq"
+bash generate_16_channel.sh tg_gtc_4.vcf "novaseq"
+bash generate_16_channel.sh tg_gtg_4.vcf "novaseq"
+bash generate_16_channel.sh tg_gtt_4.vcf "novaseq"
+bash generate_16_channel.sh tg_tta_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ttc_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ttg_4.vcf "novaseq"
+bash generate_16_channel.sh tg_ttt_4.vcf "novaseq"
+
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_hiseq
+bash 3_take_by_dp.sh 19-hct116_hiseq 4
+sort -k2,2n 19-hct116_hiseq_tg_ac_mutations.vcf_dp_4.vcf > tg_ac_4.vcf
+bgzip tg_ac_4.vcf
+tabix -p vcf tg_ac_4.vcf.gz
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATA_TAT.bed tg_ac_4.vcf.gz tg_ata_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATC_GAT.bed tg_ac_4.vcf.gz tg_atc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATG_CAT.bed tg_ac_4.vcf.gz tg_atg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_ATT_AAT.bed tg_ac_4.vcf.gz tg_att_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTA_TAG.bed tg_ac_4.vcf.gz tg_cta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTC_GAG.bed tg_ac_4.vcf.gz tg_ctc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTG_CAG.bed tg_ac_4.vcf.gz tg_ctg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_CTT_AAG.bed tg_ac_4.vcf.gz tg_ctt_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTA_TAC.bed tg_ac_4.vcf.gz tg_gta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTC_GAC.bed tg_ac_4.vcf.gz tg_gtc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTG_CAC.bed tg_ac_4.vcf.gz tg_gtg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_GTT_AAC.bed tg_ac_4.vcf.gz tg_gtt_4.vcf
+
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTA_TAA.bed tg_ac_4.vcf.gz tg_tta_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTC_GAA.bed tg_ac_4.vcf.gz tg_ttc_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTG_CAA.bed tg_ac_4.vcf.gz tg_ttg_4.vcf
+sbatch 4_subset.sh /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/hg38/chr19_TTT_AAA.bed tg_ac_4.vcf.gz tg_ttt_4.vcf
+
+bash generate_16_channel.sh tg_ata_4.vcf "hiseq"
+bash generate_16_channel.sh tg_atc_4.vcf "hiseq"
+bash generate_16_channel.sh tg_atg_4.vcf "hiseq"
+bash generate_16_channel.sh tg_att_4.vcf "hiseq"
+bash generate_16_channel.sh tg_cta_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ctc_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ctg_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ctt_4.vcf "hiseq"
+bash generate_16_channel.sh tg_gta_4.vcf "hiseq"
+bash generate_16_channel.sh tg_gtc_4.vcf "hiseq"
+bash generate_16_channel.sh tg_gtg_4.vcf "hiseq"
+bash generate_16_channel.sh tg_gtt_4.vcf "hiseq"
+bash generate_16_channel.sh tg_tta_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ttc_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ttg_4.vcf "hiseq"
+bash generate_16_channel.sh tg_ttt_4.vcf "hiseq"
+
+## cd /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116
+cat hct116_novaseq_tg_dp_4_channel_16.csv hct116_hiseq_tg_dp_4_channel_16.csv > 16_tg_4.csv
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Read the CSV file into a DataFrame with appropriate column labels
+column_labels = ["Trinucleotide Context", "Number of N[T>G]V Sites", "Platform"]
+df = pd.read_csv("16_tg_4.csv", names=column_labels)
+
+# Sort the DataFrame by alphabetical order of Number of Supporting Reads
+df = df.sort_values(by="Trinucleotide Context")
+
+# Reformat platform names to "NovaSeq" and "HiSeq"
+df["Platform"] = df["Platform"].map(lambda x: "NovaSeq" if x.lower() == "novaseq" else "HiSeq")
+df['Trinucleotide Context'] = df['Trinucleotide Context'].str.upper()
+
+# Define colors for the platforms
+colors = {"NovaSeq": "blue", "HiSeq": "red"}
+
+# Create the double bar plot using Seaborn
+plt.figure(figsize=(10, 6))
+ax = sns.barplot(
+    x="Trinucleotide Context",
+    y="Number of N[T>G]V Sites",
+    hue="Platform",
+    data=df,
+    palette=colors,
+)
+plt.xlabel("Trinucleotide Context of T>G Sites with 4 Reads")
+plt.ylabel("Number of N[T>G]V Sites")
+plt.title("Trinucleotide Contexts of 4-Read N[T>G]V Sites for HiSeq vs NovaSeq")
+plt.legend(title="Platform")
+plt.xticks(rotation=45, ha="right")
+
+# Add labels to each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f"{height}", (p.get_x() + p.get_width() / 2, height),
+                ha='center', va='bottom', fontsize=8)
+
+# Save the plot at dpi 300
+plt.savefig("hct116_tg_reporting_sites_16_channel_read_4.png", dpi=300)
+
+
+
+HCC1187BL: 
+
+U2OS: 
+
+NA12878: 
+
+HCC1395: 
+
+HCC1395BL: 
+
+NA12891:
+
+NA12892:
+
+HG001:
+
+HG002:
+
+HG003:
+
+HG004:
+
+HG005:
+
+HG006:
+
+HG007:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
