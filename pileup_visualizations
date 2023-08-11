@@ -80,6 +80,20 @@ cat 19-u2os_novaseq2_gt_mutations.vcf 19-u2os_novaseq2_ca_mutations.vcf > 19-u2o
 cat 19-u2os_novaseq2_ga_mutations.vcf 19-u2os_novaseq2_ct_mutations.vcf > 19-u2os_novaseq2_ct_ga_mutations.vcf
 cat 19-u2os_novaseq2_gc_mutations.vcf 19-u2os_novaseq2_cg_mutations.vcf > 19-u2os_novaseq2_cg_gc_mutations.vcf
 
+cat na12878_hiseq_chr19_ac_mutations.vcf na12878_hiseq_chr19_tg_mutations.vcf > na12878_hiseq_chr19_tg_ac_mutations.vcf
+cat na12878_hiseq_chr19_at_mutations.vcf na12878_hiseq_chr19_ta_mutations.vcf > na12878_hiseq_chr19_ta_at_mutations.vcf
+cat na12878_hiseq_chr19_ag_mutations.vcf na12878_hiseq_chr19_tc_mutations.vcf > na12878_hiseq_chr19_tc_ag_mutations.vcf
+cat na12878_hiseq_chr19_gt_mutations.vcf na12878_hiseq_chr19_ca_mutations.vcf > na12878_hiseq_chr19_ca_gt_mutations.vcf
+cat na12878_hiseq_chr19_ga_mutations.vcf na12878_hiseq_chr19_ct_mutations.vcf > na12878_hiseq_chr19_ct_ga_mutations.vcf
+cat na12878_hiseq_chr19_gc_mutations.vcf na12878_hiseq_chr19_cg_mutations.vcf > na12878_hiseq_chr19_cg_gc_mutations.vcf
+
+cat na12878_novaseqx_chr19_ac_mutations.vcf na12878_novaseqx_chr19_tg_mutations.vcf > na12878_novaseqx_chr19_tg_ac_mutations.vcf
+cat na12878_novaseqx_chr19_at_mutations.vcf na12878_novaseqx_chr19_ta_mutations.vcf > na12878_novaseqx_chr19_ta_at_mutations.vcf
+cat na12878_novaseqx_chr19_ag_mutations.vcf na12878_novaseqx_chr19_tc_mutations.vcf > na12878_novaseqx_chr19_tc_ag_mutations.vcf
+cat na12878_novaseqx_chr19_gt_mutations.vcf na12878_novaseqx_chr19_ca_mutations.vcf > na12878_novaseqx_chr19_ca_gt_mutations.vcf
+cat na12878_novaseqx_chr19_ga_mutations.vcf na12878_novaseqx_chr19_ct_mutations.vcf > na12878_novaseqx_chr19_ct_ga_mutations.vcf
+cat na12878_novaseqx_chr19_gc_mutations.vcf na12878_novaseqx_chr19_cg_mutations.vcf > na12878_novaseqx_chr19_cg_gc_mutations.vcf
+
 3. Take low depth mutations (range from DP=1 to 3)
 
 bash 3_take_by_dp.sh 19-km12_hiseq 1
@@ -159,7 +173,7 @@ for p in ax.patches:
 # Save the plot at dpi 300
 plt.savefig("km12_dp_5.png", dpi=300)
 
-4. Overall TG read depth histograms (HiSeq and NovaSeq on the same chart)
+4. Overall Subst. Category read depth histograms (HiSeq and NovaSeq on the same chart)
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -181,8 +195,8 @@ def extract_dp_values(vcf_filename):
     return dp_values
 
 # Read DP values from two VCF files
-dp_values_vcf1 = extract_dp_values("hct116_novaseq/19-hct116_novaseq_tc_ag_mutations.vcf")
-dp_values_vcf2 = extract_dp_values("hct116_hiseq/19-hct116_hiseq_tc_ag_mutations.vcf")
+dp_values_vcf1 = extract_dp_values("na12878_novaseqx_chr19_tg_ac_mutations.vcf")
+dp_values_vcf2 = extract_dp_values("na12878_hiseq_chr19_tg_ac_mutations.vcf")
 
 # Create histograms
 plt.figure(figsize=(10, 6))
@@ -192,10 +206,10 @@ plt.xlabel("Read Depth (DP)")
 plt.ylabel("Frequency")
 plt.title("Read Depth Distribution")
 plt.legend()
-plt.savefig("19-HCT116_TC_RDs.png", dpi=300)
+plt.savefig("19-na12878_TG_RDs.png", dpi=300)
 plt.show()
 
-# Check at which read depth TA is highest at. 
+# Check at which read depth is highest at. 
 mode_vcf1 = stats.mode(dp_values_vcf1).mode[0]
 mode_vcf2 = stats.mode(dp_values_vcf2).mode[0]
 
@@ -210,3 +224,5 @@ bash km12_hiseq/3_take_by_dp.sh km12_hiseq/19-km12_hiseq 5
 bash km12_hiseq/3_take_by_dp.sh km12_novaseq/19-km12_novaseq 5 
 cat km12_hiseq/19-km12_hiseq_dp_5.csv km12_novaseq/19-km12_novaseq_dp_5.csv > dp5.csv
 
+
+4. Examine trinucleotide contexts of T>G excesses on KM12 and HCT116, at particular DP e.g. DP of 4-5 (HiSeq and NovaSeq on the same chart)
