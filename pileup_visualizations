@@ -41,6 +41,12 @@ sbatch 1_bcf_to_vcf.sh 19-NA12892_novaseq_finally_filtered.bcf-call
 sbatch 1_bcf_to_vcf.sh 19-hcc1187-bl_hiseq_finally_filtered.bcf-call
 sbatch 1_bcf_to_vcf.sh 19-hcc1187-bl_novaseq_finally_filtered.bcf-call
 
+15 aug, tue
+sbatch 1_bcf_to_vcf.sh 19-hcc1143_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hcc1143_novaseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hcc1187_hiseq_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-hcc1187_novaseq_finally_filtered.bcf-call
+
 2. Parse VCF into 12 mutation categories
 sbatch 2_parse_only.sh 19-km12_hiseq_finally_filtered.vcf 
 sbatch 2_parse_only.sh 19-km12_novaseq_finally_filtered.vcf 
@@ -72,10 +78,16 @@ sbatch 2_parse_only.sh 19-HG007_novaseq_finally_filtered.vcf
 sbatch 2_parse_only.sh 19-NA12891_hiseq_finally_filtered.vcf
 sbatch 2_parse_only.sh 19-NA12891_novaseq_finally_filtered.vcf
 sbatch 2_parse_only.sh 19-NA12892_hiseq_finally_filtered.vcf
-sbatch 2_parse_only.sh 19-NA12892_novaseq_finally_filtered.vcf 14668841
+sbatch 2_parse_only.sh 19-NA12892_novaseq_finally_filtered.vcf 
 
-sbatch 2_parse_only.sh 19-hcc1187-bl_hiseq_finally_filtered.vcf 14670073
-sbatch 2_parse_only.sh 19-hcc1187-bl_novaseq_finally_filtered.vcf 14670074
+sbatch 2_parse_only.sh 19-hcc1187-bl_hiseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-hcc1187-bl_novaseq_finally_filtered.vcf 
+
+15 aug, tue
+sbatch 2_parse_only.sh 19-hcc1143_hiseq_finally_filtered.vcf 14996016
+sbatch 2_parse_only.sh 19-hcc1143_novaseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-hcc1187_hiseq_finally_filtered.vcf 
+sbatch 2_parse_only.sh 19-hcc1187_novaseq_finally_filtered.vcf 14996019
 
 2.5 Collapse into reverse complementaries
 cat 19-km12_hiseq_ac_mutations.vcf 19-km12_hiseq_tg_mutations.vcf > 19-km12_hiseq_tg_ac_mutations.vcf
