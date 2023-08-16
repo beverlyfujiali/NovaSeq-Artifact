@@ -238,10 +238,10 @@ sbatch 6_align_hg38.sh 19-hcc1187_novaseq.1_p.fastq 19-hcc1187_novaseq.2_p.fastq
 sbatch 6_align_grch37.sh 19-1465ba9_hiseq.1_p.fastq 19-1465ba9_hiseq.2_p.fastq 
 sbatch 6_align_grch37.sh 19-1465ba9_novaseq.1_p.fastq 19-1465ba9_novaseq.2_p.fastq 
 
-sbatch 6_align_grch37.sh 19-5575_novaseq.1_p.fastq 19-5575_novaseq.2_p.fastq
-sbatch 6_align_grch37.sh 19-5580_novaseq.1_p.fastq 19-5580_novaseq.2_p.fastq
+sbatch 6_align_grch37.sh 19-5575_novaseq.1_p.fastq 19-5575_novaseq.2_p.fastq 15017915
+sbatch 6_align_grch37.sh 19-5580_novaseq.1_p.fastq 19-5580_novaseq.2_p.fastq 15017918
 
-sbatch 6_align_grch37.sh 19-4638_hiseq.1_p.fastq 19-4638_hiseq.2_p.fastq
+sbatch 6_align_grch37.sh 19-4638_hiseq.1_p.fastq 19-4638_hiseq.2_p.fastq 15017925
 
 7. Postprocess trimmed BAMs using fixmate, sort, markdup
 sbatch 7_postprocess_bam.sh 19-km12_hiseq_trimmed.bam 
