@@ -288,10 +288,10 @@ sbatch 7_postprocess_bam.sh 19-hcc1187_novaseq_trimmed.bam 14988549
 sbatch 7_postprocess_bam.sh 19-1465ba9_hiseq_trimmed.bam 14990188
 sbatch 7_postprocess_bam.sh 19-1465ba9_novaseq_trimmed.bam 14990189
 
-sbatch 7_postprocess_bam.sh 19-5575_novaseq_trimmed.bam
-sbatch 7_postprocess_bam.sh 19-5580_novaseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-5575_novaseq_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-5580_novaseq_trimmed.bam 
 
-sbatch 7_postprocess_bam.sh 19-4638_hiseq_trimmed.bam
+sbatch 7_postprocess_bam.sh 19-4638_hiseq_trimmed.bam 
 
 8. Filter trimmed BAMs by mapping quality (60), removing reads not in proper pairs, or fail sec/supp alignments/are duplicates/indels
 sbatch 8_aggressive_filter.sh 19-km12_hiseq_postprocessed.bam 
@@ -338,9 +338,9 @@ sbatch 8_aggressive_filter.sh 19-hcc1187_novaseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-1465ba9_hiseq_postprocessed.bam 
 sbatch 8_aggressive_filter.sh 19-1465ba9_novaseq_postprocessed.bam 
 
-sbatch 8_aggressive_filter.sh 19-5575_novaseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-5580_novaseq_postprocessed.bam
-sbatch 8_aggressive_filter.sh 19-4638_hiseq_postprocessed.bam
+sbatch 8_aggressive_filter.sh 19-5575_novaseq_postprocessed.bam 15062761
+sbatch 8_aggressive_filter.sh 19-5580_novaseq_postprocessed.bam 15063547
+sbatch 8_aggressive_filter.sh 19-4638_hiseq_postprocessed.bam 15062764
 
 9. Pile up & call (choose script as per ref genome grch37/hg38)
 sbatch 9_mpileup_hg38.sh 19-km12_hiseq_finally_filtered.bam 
@@ -387,9 +387,9 @@ sbatch 9_mpileup_hg38.sh 19-hcc1187_novaseq_finally_filtered.bam 14992501
 sbatch 9_mpileup_grch37.sh 19-1465ba9_hiseq_finally_filtered.bam 14994011
 sbatch 9_mpileup_grch37.sh 19-1465ba9_novaseq_finally_filtered.bam 14994013
 
-sbatch 9_mpileup_grch37.sh 19-5575_novaseq_finally_filtered.bam 
-sbatch 9_mpileup_grch37.sh 19-5580_novaseq_finally_filtered.bam
-sbatch 9_mpileup_grch37.sh 19-4638_hiseq_finally_filtered.bam
+sbatch 9_mpileup_grch37.sh 19-5575_novaseq_finally_filtered.bam 15067032
+sbatch 9_mpileup_grch37.sh 19-5580_novaseq_finally_filtered.bam 15067033
+sbatch 9_mpileup_grch37.sh 19-4638_hiseq_finally_filtered.bam 15067034
 
 
 
