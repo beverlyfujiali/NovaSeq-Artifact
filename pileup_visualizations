@@ -431,99 +431,121 @@ import seaborn as sns
 import numpy as np
 from scipy import stats
 
-# Function to extract DP values from a VCF file
-def extract_dp_values(vcf_filename):
-    dp_values = []
+# Function to extract AAF values from a VCF file
+def extract_af_values(vcf_filename):
+    af_values = []
     with open(vcf_filename, "r") as f:
         for line in f:
             if line.startswith("#"):
                 continue  # Skip header lines
             fields = line.strip().split("\t")
-            info_field = fields[7]
-            for item in info_field.split(";"):
-                key, value = item.split("=")
-                if key == "DP":
-                    dp_values.append(int(value))
-    return dp_values
+            info_field = fields[9]  # Assuming the last field contains the desired information
+            last_field_values = info_field.split(":")
+            af_value_str = last_field_values[-2]  # Get the second-to-last value
+            af_value_parts = af_value_str.split(",")  # Split by comma
+            af_value = int(af_value_parts[1])  # Take the second part
+            af_values.append(af_value)
+    return af_values
 
-bins = np.arange(0, 101, 5)
+prefix="19-1465ba9"
+prefix1="19-1465ba9_novaseq"
+prefix2="19-1465ba9_hiseq"
 
 #CA
-dp_values_vcf1_ca = extract_dp_values("hg004/hg004_novaseq/19-HG004_novaseq_ca_gt_mutations.vcf")
-dp_values_vcf2_ca = extract_dp_values("19-HG004_hiseq_ca_gt_mutations.vcf")
+af_values_vcf1_ca = extract_af_values(prefix1+"_ca_gt_mutations.vcf")
+af_values_vcf2_ca = extract_af_values(prefix2+"_ca_gt_mutations.vcf")
+
+binmax=max(np.max(af_values_vcf1_ca), np.max(af_values_vcf2_ca))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_ca, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_ca, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_ca, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_ca, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of C>A Sites")
+plt.title("Number of C>A Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg004_CA_RDs.png", dpi=300)
+plt.savefig(prefix+"_CA.png", dpi=300)
 plt.show()
 
 #CG
-dp_values_vcf1_cg = extract_dp_values("hg004/hg004_novaseq/19-HG004_novaseq_cg_gc_mutations.vcf")
-dp_values_vcf2_cg = extract_dp_values("hg004/hg004_hiseq/19-HG004_hiseq_cg_gc_mutations.vcf")
+af_values_vcf1_cg = extract_af_values(prefix1+"_cg_gc_mutations.vcf")
+af_values_vcf2_cg = extract_af_values(prefix2+"_cg_gc_mutations.vcf")
+binmax=max(np.max(af_values_vcf1_cg), np.max(af_values_vcf2_cg))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_cg, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_cg, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_cg, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_cg, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of C>G Sites")
+plt.title("Number of C>G Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg004_CG_RDs.png", dpi=300)
+plt.savefig(prefix+"_CG.png", dpi=300)
 plt.show()
 
 #CT
-dp_values_vcf1_ct = extract_dp_values("hg003/hg003_novaseq/19-HG003_novaseq_ct_ga_mutations.vcf")
-dp_values_vcf2_ct = extract_dp_values("hg003/hg003_hiseq/19-HG003_hiseq_ct_ga_mutations.vcf")
+af_values_vcf1_ct = extract_af_values(prefix1+"_ct_ga_mutations.vcf")
+af_values_vcf2_ct = extract_af_values(prefix2+"_ct_ga_mutations.vcf")
+binmax=max(np.max(af_values_vcf1_ct), np.max(af_values_vcf2_ct))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_ct, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_ct, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_ct, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_ct, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of C>T Sites")
+plt.title("Number of C>T Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg003_CT_RDs.png", dpi=300)
+plt.savefig(prefix+"_CT.png", dpi=300)
 plt.show()
 
 #TA
-dp_values_vcf1_ta = extract_dp_values("hg003/hg003_novaseq/19-HG003_novaseq_ta_at_mutations.vcf")
-dp_values_vcf2_ta = extract_dp_values("hg003/hg003_hiseq/19-HG003_hiseq_ta_at_mutations.vcf")
+af_values_vcf1_ta = extract_af_values(prefix1+"_ta_at_mutations.vcf")
+af_values_vcf2_ta = extract_af_values(prefix2+"_ta_at_mutations.vcf")
+binmax=max(np.max(af_values_vcf1_ta), np.max(af_values_vcf2_ta))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_ta, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_ta, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_ta, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_ta, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of T>A Sites")
+plt.title("Number of T>A Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg003_TA_RDs.png", dpi=300)
+plt.savefig(prefix+"_TA.png", dpi=300)
 plt.show()
 
 #TC
-dp_values_vcf1_tc = extract_dp_values("hg003/hg003_novaseq/19-HG003_novaseq_tc_ag_mutations.vcf")
-dp_values_vcf2_tc = extract_dp_values("hg003/hg003_hiseq/19-HG003_hiseq_tc_ag_mutations.vcf")
+af_values_vcf1_tc = extract_af_values(prefix1+"_tc_ag_mutations.vcf")
+af_values_vcf2_tc = extract_af_values(prefix2+"_tc_ag_mutations.vcf")
+binmax=max(np.max(af_values_vcf1_tc), np.max(af_values_vcf2_tc))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_tc, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_tc, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_tc, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_tc, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of T>C Sites")
+plt.title("Number of T>C Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg003_TC_RDs.png", dpi=300)
+plt.savefig(prefix+"_TC.png", dpi=300)
 plt.show()
 
 #TG
-dp_values_vcf1_tg = extract_dp_values("hg003/hg003_novaseq/19-HG003_novaseq_tg_ac_mutations.vcf")
-dp_values_vcf2_tg = extract_dp_values("hg003/hg003_hiseq/19-HG003_hiseq_tg_ac_mutations.vcf")
+af_values_vcf1_tg = extract_af_values(prefix1+"_tg_ac_mutations.vcf")
+af_values_vcf2_tg = extract_af_values(prefix2+"_tg_ac_mutations.vcf")
+binmax=max(np.max(af_values_vcf1_tg), np.max(af_values_vcf2_tg))
+bins=np.arange(0,binmax,1)
+
 plt.figure(figsize=(10, 6))
-sns.histplot(dp_values_vcf1_tg, bins=bins, kde=True, color="blue", label="NovaSeq")
-sns.histplot(dp_values_vcf2_tg, bins=bins, kde=True, color="red", label="HiSeq")
-plt.xlabel("Read Depth (DP)")
-plt.ylabel("Density")
-plt.title("Read Depth Distribution (Normalized)")
+sns.histplot(af_values_vcf1_tg, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf2_tg, bins=bins, kde=True, color="red", label="HiSeq")
+plt.xlabel("Alt Allele Frequency")
+plt.ylabel("Number of T>G Sites")
+plt.title("Number of T>G Sites with Particular AAF (Step Size = 1)")
 plt.legend()
-plt.savefig("19-hg003_TG_RDs.png", dpi=300)
+plt.savefig(prefix+"_TG.png", dpi=300)
 plt.show()
 
 
