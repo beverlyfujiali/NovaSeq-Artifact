@@ -1,0 +1,143 @@
+after obtaining vcfs from bcftools mpileup and call:
+
+1. take discordant callsets using discordant.sh
+
+2. use bcftools to view --max-ad 2, 5, 10 using ad.sh
+
+sbatch ad.sh 19-km12_novaseq 19-km12_hiseq
+sbatch ad.sh 19-hct116_novaseq 19-hct116_hiseq
+sbatch ad.sh 19-u2os_novaseq 19-u2os_hiseq
+
+3. assess whether there's a significant bias toward T$>$G mutations in novaseq compared to both other categories (C$>$A/C$>$G/C$>$T/T$>$A/T$>$C) and hiseq. 
+
+4. find most frequent kmers in 2, 5, 10?
+
+
+
+
+
+
+
+
+
+
+discordant.sh
+
+#!/bin/bash
+#SBATCH -p short
+#SBATCH -t 1:00:00
+#SBATCH -c 8
+#SBATCH --mem=5G
+#SBATCH -o errs_and_outs/ad_%j.out  
+#SBATCH -e errs_and_outs/ad_%j.err 
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=beverlyfu.slurm@gmail.com
+
+vcf1=$1
+vcf2=$2
+bgzip $vcf1 &&
+bgzip $vcf2 && 
+tabix -p ${vcf1}.gz &&
+tabix -p ${vcf2}.gz &&
+
+bcftools isec -c snps -p "discordant_callsets" ${vcf1}.gz ${vcf2}.gz
+
+sbatch discordant.sh 19-km12_novaseq_finally_filtered.vcf 19-km12_hiseq_finally_filtered.vcf
+  Submitted batch job 15203194
+sbatch discordant.sh 19-hct116_novaseq_finally_filtered.vcf 19-hct116_hiseq_finally_filtered.vcf
+  Submitted batch job 15203283
+sbatch discordant.sh 19-u2os_novaseq1_finally_filtered.vcf 19-u2os_hiseq_finally_filtered.vcf 
+  Submitted batch job 15203557
+
+nygc
+/n/data1/hms/dbmi/park/DATA/crossplatform/pileup/nygc/hcc1143/19-hcc1143_novaseq_only.vcf
+/n/data1/hms/dbmi/park/DATA/crossplatform/pileup/nygc/hcc1143/19-hcc1143_hiseq_only.vcf
+
+/n/data1/hms/dbmi/park/DATA/crossplatform/pileup/nygc/hcc1187/19-hcc1187_novaseq_only.vcf
+/n/data1/hms/dbmi/park/DATA/crossplatform/pileup/nygc/hcc1187/19-hcc1187_hiseq_only.vcf
+
+mv hg002/hg002_hiseq/19-HG002_hiseq_finally_filtered.vcf .
+mv hg002/hg002_novaseq/19-HG002_novaseq_finally_filtered.vcf .
+mv hg003/hg003_hiseq/19-HG003_hiseq_finally_filtered.vcf .
+mv hg003/hg003_novaseq/19-HG003_novaseq_finally_filtered.vcf .
+mv hg004/hg004_hiseq/19-HG004_hiseq_finally_filtered.vcf .
+mv hg004/hg004_novaseq/19-HG004_novaseq_finally_filtered.vcf .
+mv hg005/hg005_hiseq/19-HG005_hiseq_finally_filtered.vcf .
+mv hg005/hg005_novaseq/19-HG005_novaseq_finally_filtered.vcf .
+mv hg006/hg006_hiseq/19-HG006_hiseq_finally_filtered.vcf .
+mv hg006/hg006_novaseq/19-HG006_novaseq_finally_filtered.vcf .
+mv hg007/hg007_hiseq/19-HG007_hiseq_finally_filtered.vcf .
+mv hg007/hg007_novaseq/19-HG001_novaseq_finally_filtered.vcf .
+
+sbatch discordant.sh 19-HG001_novaseq_finally_filtered.vcf 19-HG001_hiseq_finally_filtered.vcf
+Submitted batch job 15204792
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG002_novaseq_finally_filtered.vcf 19-HG002_hiseq_finally_filtered.vcf
+Submitted batch job 15204793
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG003_novaseq_finally_filtered.vcf 19-HG003_hiseq_finally_filtered.vcf
+Submitted batch job 15204795
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG004_novaseq_finally_filtered.vcf 19-HG004_hiseq_finally_filtered.vcf
+Submitted batch job 15204796
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG005_novaseq_finally_filtered.vcf 19-HG005_hiseq_finally_filtered.vcf
+Submitted batch job 15204798
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG006_novaseq_finally_filtered.vcf 19-HG006_hiseq_finally_filtered.vcf
+Submitted batch job 15204799
+(lowcov) [bf83@compute-a-16-163 giab]$ sbatch discordant.sh 19-HG007_novaseq_finally_filtered.vcf 19-HG007_hiseq_finally_filtered.vcf
+Submitted batch job 15204805
+
+mv na12891/na12891_hiseq/19-na12891_hiseq_finally_filtered.vcf .
+mv na12891/na12891_novaseq/19-na12891_novaseq_finally_filtered.vcf .
+mv na12892/na12892_hiseq/19-na12892_hiseq_finally_filtered.vcf .
+mv na12892/na12892_novaseq/19-na12892_novaseq_finally_filtered.vcf .
+
+19-NA12891_novaseq_finally_filtered.vcf 19-NA12891_hiseq_finally_filtered.vcf
+
+
+ad.sh
+
+#!/bin/bash
+#SBATCH -p short
+#SBATCH -t 1:00:00
+#SBATCH -c 8
+#SBATCH --mem=5G
+#SBATCH -o errs_and_outs/ad_%j.out  
+#SBATCH -e errs_and_outs/ad_%j.err 
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=beverlyfu.slurm@gmail.com
+
+prefix1=$1
+prefix2=$2
+# e.g. prefix1=19-km12_novaseq
+# e.g. prefix2=19-km12_hiseq
+
+# Get AD < 2
+bcftools view -v snps -i 'MAX(FORMAT/AD)<2' ${prefix1}_only.vcf > ${prefix1}_max_2.vcf
+
+bcftools view -v snps -i 'MAX(FORMAT/AD)<2' ${prefix2}_only.vcf > ${prefix2}_max_2.vcf
+
+# Get AD < 5
+bcftools view -v snps -i 'MAX(FORMAT/AD)<5' ${prefix1}_only.vcf > ${prefix1}_max_5.vcf
+
+bcftools view -v snps -i 'MAX(FORMAT/AD)<5' ${prefix2}_only.vcf > ${prefix2}_max_5.vcf
+
+# Get AD < 10
+bcftools view -v snps -i 'MAX(FORMAT/AD)<10' ${prefix1}_only.vcf > ${prefix1}_max_10.vcf
+
+bcftools view -v snps -i 'MAX(FORMAT/AD)<10' ${prefix2}_only.vcf > ${prefix2}_max_10.vcf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
