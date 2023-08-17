@@ -468,6 +468,42 @@ plt.legend()
 plt.savefig(prefix+"_CA.png", dpi=300)
 plt.show()
 
+af_values_vcf1_ca = extract_af_values(prefix1+"_ca_gt_mutations.vcf")
+af_values_vcf2_ca = extract_af_values(prefix2+"_ca_gt_mutations.vcf")
+
+# CAx2
+af_values_vcf1_ca = extract_af_values(prefix1+"_ca_gt_mutations.vcf")
+af_values_vcf2_ca = extract_af_values(prefix2+"_ca_gt_mutations.vcf")
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+
+max_value = max(np.max(af_values_vcf1_ca), np.max(af_values_vcf2_ca))
+
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_ca, discrete=True, bins=np.arange(0, max_value + 1), stat='count', color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of C>A Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_ca, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of C>A Sites")
+ax2.set_title("HiSeq")
+
+
+
+ax1.set_xlim(0, 20)
+ax2.set_xlim(0, 20)
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
+
+plt.savefig(prefix+"_CA.png", dpi=300)
+plt.show()
+
+
 #CG
 af_values_vcf1_cg = extract_af_values(prefix1+"_cg_gc_mutations.vcf")
 af_values_vcf2_cg = extract_af_values(prefix2+"_cg_gc_mutations.vcf")
@@ -484,6 +520,38 @@ plt.legend()
 plt.savefig(prefix+"_CG.png", dpi=300)
 plt.show()
 
+# CGx2
+
+af_values_vcf1_cg = extract_af_values(prefix1+"_cg_gc_mutations.vcf")
+af_values_vcf2_cg = extract_af_values(prefix2+"_cg_gc_mutations.vcf")
+
+max_value = 20
+
+# Create a figure with two subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_cg, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of C>G Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_cg, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of C>G Sites")
+ax2.set_title("HiSeq")
+
+ax1.set_xlim(0, max_value)
+ax2.set_xlim(0, max_value)
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
+plt.savefig(prefix+"_CG.png", dpi=300)
+plt.show()
+
+
 #CT
 af_values_vcf1_ct = extract_af_values(prefix1+"_ct_ga_mutations.vcf")
 af_values_vcf2_ct = extract_af_values(prefix2+"_ct_ga_mutations.vcf")
@@ -497,6 +565,37 @@ plt.xlabel("Alt Allele Frequency")
 plt.ylabel("Number of C>T Sites")
 plt.title("Number of C>T Sites with Particular AAF (Step Size = 1)")
 plt.legend()
+plt.savefig(prefix+"_CT.png", dpi=300)
+plt.show()
+
+# CT
+
+af_values_vcf1_ct = extract_af_values(prefix1+"_ct_ga_mutations.vcf")
+af_values_vcf2_ct = extract_af_values(prefix2+"_ct_ga_mutations.vcf")
+
+max_value = 20
+
+# Create a figure with two subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_ct, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of C>T Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_ct, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of C>T Sites")
+ax2.set_title("HiSeq")
+
+ax1.set_xlim(0, max_value)
+ax2.set_xlim(0, max_value)
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
 plt.savefig(prefix+"_CT.png", dpi=300)
 plt.show()
 
@@ -516,6 +615,38 @@ plt.legend()
 plt.savefig(prefix+"_TA.png", dpi=300)
 plt.show()
 
+#TAx2
+af_values_vcf1_ta = extract_af_values(prefix1+"_ta_at_mutations.vcf")
+af_values_vcf2_ta = extract_af_values(prefix2+"_ta_at_mutations.vcf")
+
+max_value = 20
+
+# Create a figure with two subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_ta, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of T>A Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_ta, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of T>A Sites")
+ax2.set_title("HiSeq")
+
+
+ax1.set_xlim(0, max_value)
+ax2.set_xlim(0, max_value)
+
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
+plt.savefig(prefix+"_TA.png", dpi=300)
+plt.show()
+
 #TC
 af_values_vcf1_tc = extract_af_values(prefix1+"_tc_ag_mutations.vcf")
 af_values_vcf2_tc = extract_af_values(prefix2+"_tc_ag_mutations.vcf")
@@ -532,25 +663,89 @@ plt.legend()
 plt.savefig(prefix+"_TC.png", dpi=300)
 plt.show()
 
+#TCx2
+af_values_vcf1_tc = extract_af_values(prefix1+"_tc_ag_mutations.vcf")
+af_values_vcf2_tc = extract_af_values(prefix2+"_tc_ag_mutations.vcf")
+
+max_value = 20
+
+# Create a figure with two subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
+
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_tc, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of T>C Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_tc, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of T>C Sites")
+ax2.set_title("HiSeq")
+
+
+ax1.set_xlim(0, max_value)
+ax2.set_xlim(0, max_value)
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
+plt.savefig(prefix+"_TC.png", dpi=300)
+plt.show()
+
 #TG
 af_values_vcf1_tg = extract_af_values(prefix1+"_tg_ac_mutations.vcf")
 af_values_vcf2_tg = extract_af_values(prefix2+"_tg_ac_mutations.vcf")
 binmax=max(np.max(af_values_vcf1_tg), np.max(af_values_vcf2_tg))
-bins=np.arange(0,binmax,1)
+bins=np.arange(0,20)
 
 plt.figure(figsize=(10, 6))
-sns.histplot(af_values_vcf1_tg, bins=bins, kde=True, color="blue", label="NovaSeq")
+sns.histplot(af_values_vcf1_tg, common_bins=True, kde=True, color="blue", label="NovaSeq")
 sns.histplot(af_values_vcf2_tg, bins=bins, kde=True, color="red", label="HiSeq")
 plt.xlabel("Alt Allele Frequency")
-plt.ylabel("Number of T>G Sites")
-plt.title("Number of T>G Sites with Particular AAF (Step Size = 1)")
+plt.ylabel("Number of T>G Sites (in 1000s)")
+plt.title("Number of T>G Sites with Particular AAF (Step Size = 1000)")
 plt.legend()
+
+# Set y-axis ticks to be in the thousands
+plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,}".format(int(x))))
+
+# Set x-axis limits to 20
+plt.xlim(0, 20)
+
 plt.savefig(prefix+"_TG.png", dpi=300)
 plt.show()
 
+#TGx2
+af_values_vcf1_tg = extract_af_values(prefix1+"_tg_ac_mutations.vcf")
+af_values_vcf2_tg = extract_af_values(prefix2+"_tg_ac_mutations.vcf")
 
+max_value = 20
 
+# Create a figure with two subplots
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6), sharey=True)
 
+# Plot the histograms on the respective subplots
+sns.histplot(af_values_vcf1_tg, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="blue", ax=ax1)
+ax1.set_xlabel("Alt Allele Frequency")
+ax1.set_ylabel("Number of T>G Sites")
+ax1.set_title("NovaSeq")
+
+sns.histplot(af_values_vcf2_tg, discrete=True, stat='count', bins=np.arange(0, max_value + 1), color="red", ax=ax2)
+ax2.set_xlabel("Alt Allele Frequency")
+ax2.set_ylabel("Number of T>G Sites")
+ax2.set_title("HiSeq")
+
+ax1.set_xlim(0, max_value)
+ax2.set_xlim(0, max_value)
+
+# Adjust spacing between subplots
+plt.tight_layout()
+
+# Save and show the figure
+plt.savefig(prefix+"_TG.png", dpi=300)
+plt.show()
 
 
 
