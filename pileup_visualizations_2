@@ -21,6 +21,7 @@ sbatch ad.sh 19-u2os_novaseq 19-u2os_hiseq
 
 
 
+
 discordant.sh
 
 #!/bin/bash
