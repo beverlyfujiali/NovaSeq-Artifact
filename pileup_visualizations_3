@@ -1,1 +1,2 @@
 Move all vcfs to the same folder (pileup/results). [done]
+Perform k-means clustering on 19-4638 vs 19-5755.
