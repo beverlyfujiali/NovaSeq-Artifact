@@ -1,5 +1,7 @@
 Move all vcfs to the same folder (pileup/results). [done]
 Get tables from vcfs.
+  - sbatch gzip_d.sh <vcf.g>
+  - sbatch vcf_to_tbl.sh <prefix>
 Calculate coverages from BAMs.
 Analyze mutation count distributions at particular ADs based on AAF (1%, 2%, 5%, 10%) x Coverage.
 Compute Novaseq vs HiSeq chi-square statistics for each mutational category.
