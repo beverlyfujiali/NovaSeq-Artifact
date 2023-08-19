@@ -1,8 +1,266 @@
 Move all vcfs to the same folder (pileup/results). [done]
 Get tables from vcfs.
-  - sbatch gzip_d.sh <vcf.g>
-  - sbatch vcf_to_tbl.sh <prefix>
+  - sbatch gzip_d.sh <vcf.gz> [done]
+  - sbatch vcf_to_table.sh <prefix> [done]
+          sbatch vcf_to_table.sh 19-5575_novaseq_finally_filtered 
+          
+          sbatch vcf_to_table.sh 19-hcc1143_hiseq_finally_filtered 
+          sbatch vcf_to_table.sh 19-hcc1143_novaseq_finally_filtered 
+          
+          sbatch vcf_to_table.sh 19-hcc1187_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-hcc1187_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HCC1395_NORMAL_HISEQX_finally_filtered
+          sbatch vcf_to_table.sh 19-HCC1395_NORMAL_NOVASEQ_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG001_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG001_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG002_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG002_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG003_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG003_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG004_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG004_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG005_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG005_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG006_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG006_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-HG007_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-HG007_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-km12_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-km12_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-NA12891_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-NA12891_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-NA12892_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-NA12892_novaseq_finally_filtered
+          
+          sbatch vcf_to_table.sh 19-u2os_hiseq_finally_filtered
+          sbatch vcf_to_table.sh 19-u2os_novaseq1_finally_filtered
+          
+          sbatch vcf_to_table.sh na12878_hiseq_chr19_finally_filtered
+          sbatch vcf_to_table.sh na12878_novaseqx_chr19_finally_filtered
+
 Calculate coverages from BAMs.
+- link to coverages folder [done]
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-1465ba9_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-1465ba9_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-4638_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-5575_novaseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-5580_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-hcc1143_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-hcc1143_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-hcc1187_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-hcc1187_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg001/hg001_hiseq/19-HG001_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg001/hg001_novaseq/19-HG001_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg002/hg002_hiseq/19-HG002_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg002/hg002_novaseq/19-HG002_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg003/hg003_hiseq/19-HG003_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg003/hg003_novaseq/19-HG003_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg004/hg004_hiseq/19-HG004_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg004/hg004_novaseq/19-HG004_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg005/hg005_hiseq/19-HG005_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg005/hg005_novaseq/19-HG005_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg006/hg006_hiseq/19-HG006_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg006/hg006_novaseq/19-HG006_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg007/hg007_hiseq/19-HG007_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg007/hg007_novaseq/19-HG007_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/na12878/na12878_hiseq_chr19_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/na12878/na12878_novaseqx_chr19_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12891/na12891_hiseq/19-NA12891_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12891/na12891_novaseq/19-NA12891_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12892/na12892_hiseq/19-NA12892_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12892/na12892_novaseq/19-NA12892_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_hiseq/19-km12_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_novaseq/19-km12_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_hiseq/19-hct116_hiseq_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_novaseq/19-hct116_novaseq_finally_filtered.bam .
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_hiseq/19-u2os_hiseq_finally_filtered.bam
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_novaseq1/19-u2os_novaseq1_finally_filtered.bam
+        
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_nci/hiseq/19-HCC1395_NORMAL_HISEQX_finally_filtered.bam .
+        ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_nci/novaseq/19-HCC1395_NORMAL_NOVASEQ_finally_filtered.bam .
+
+Calculate coverages for all pileups [done]
+
+- sbatch coverage.sh 
+collated-19-1465BA9-HiSeq_finally_filtered.bam [14584442]
+
+- sbatch calculate_mean_depths.sh 
+collated-19-1465BA9-HiSeq_finally_filtered.bam_coverage.txt 
+collated-19-1465BA9-HiSeq_finally_filtered_coverage.csv
+
+- bash find_median.sh
+collated-19-1465BA9-HiSeq_finally_filtered_coverage.csv (88.3882)
+
+- sbatch read_depth_plot.sh 
+collated-19-1465BA9-HiSeq_finally_filtered_coverage.csv 
+collated-19-1465BA9-HiSeq_finally_filtered_coverage.png 
+"collated-19-1465BA9-HiSeq_finally_filtered_coverage"
+
+sbatch read_depth_plot.sh 19-1465ba9_hiseq.csv 19-1465ba9_hiseq.png "19-1465ba9_hiseq"
+sbatch read_depth_plot.sh 19-1465ba9_novaseq.csv 19-1465ba9_novaseq.png "19-1465ba9_novaseq"
+
+sbatch read_depth_plot.sh 19-4638_hiseq.csv 19-4638_hiseq.png "19-4638_hiseq"
+sbatch read_depth_plot.sh 19-5575_novaseq.csv 19-5575_novaseq.png "19-5575_novaseq"
+sbatch read_depth_plot.sh 19-5580_novaseq.csv 19-5580_novaseq.png "19-5580_novaseq"
+
+sbatch read_depth_plot.sh 19-hcc1143_hiseq.csv 19-hcc1143_hiseq.png "19-hcc1143_hiseq"
+sbatch read_depth_plot.sh 19-hcc1143_novaseq.csv 19-hcc1143_novaseq.png "19-hcc1143_novaseq"
+
+sbatch read_depth_plot.sh 19-hcc1187_hiseq.csv 19-hcc1187_hiseq.png "19-hcc1187_hiseq"
+sbatch read_depth_plot.sh 19-hcc1187_novaseq.csv 19-hcc1187_novaseq.png "19-hcc1187_novaseq"
+
+sbatch read_depth_plot.sh 19-hcc1395_hiseq.csv 19-hcc1395_hiseq.png "19-hcc1395_hiseq"
+sbatch read_depth_plot.sh 19-hcc1395_novaseq.csv 19-hcc1395_novaseq.png "19-hcc1395_novaseq"
+
+sbatch read_depth_plot.sh 19-hct116_hiseq.csv 19-hct116_hiseq.png "19-hct116_hiseq"
+sbatch read_depth_plot.sh 19-hct116_novaseq.csv 19-hct116_novaseq "19-hct116_novaseq"
+
+sbatch read_depth_plot.sh 19-HG001_hiseq.csv 19-HG001_hiseq.png "19-HG001_hiseq"
+sbatch read_depth_plot.sh 19-HG001_novaseq.csv 19-HG001_novaseq.png 
+sbatch read_depth_plot.sh 19-HG002_hiseq.csv
+sbatch read_depth_plot.sh 19-HG002_novaseq.csv
+sbatch read_depth_plot.sh 19-HG003_hiseq.csv
+sbatch read_depth_plot.sh 19-HG003_novaseq.csv
+sbatch read_depth_plot.sh 19-HG004_hiseq.csv
+sbatch read_depth_plot.sh 19-HG004_novaseq.csv
+sbatch read_depth_plot.sh 19-HG005_hiseq.csv
+sbatch read_depth_plot.sh 19-HG005_novaseq.csv
+sbatch read_depth_plot.sh 19-HG006_hiseq.csv
+sbatch read_depth_plot.sh 19-HG006_novaseq.csv
+sbatch read_depth_plot.sh 19-HG007_hiseq.csv
+sbatch read_depth_plot.sh 19-HG007_novaseq.csv
+
+sbatch read_depth_plot.sh 19-km12_hiseq.csv
+sbatch read_depth_plot.sh 19-km12_novaseq.csv
+sbatch read_depth_plot.sh 19-NA12891_hiseq.csv
+sbatch read_depth_plot.sh 19-NA12891_novaseq.csv
+sbatch read_depth_plot.sh 19-NA12892_hiseq.csv
+sbatch read_depth_plot.sh 19-NA12892_novaseq.csv
+sbatch read_depth_plot.sh 19-u2os_hiseq.csv
+sbatch read_depth_plot.sh 19-u2os_novaseq1.csv
+sbatch read_depth_plot.sh na12878_hiseq_chr19.csv
+sbatch read_depth_plot.sh na12878_novaseqx_chr19.csv
+
+sbatch calculate_mean_depths.sh 19-1465ba9_hiseq_finally_filtered.bam_coverage.txt 19-1465ba9_hiseq.csv
+sbatch calculate_mean_depths.sh 19-1465ba9_novaseq_finally_filtered.bam_coverage.txt 19-1465ba9_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-4638_hiseq_finally_filtered.bam_coverage.txt 19-4638_hiseq.csv
+sbatch calculate_mean_depths.sh 19-5575_novaseq_finally_filtered.bam_coverage.txt 19-5575_novaseq.csv
+sbatch calculate_mean_depths.sh 19-5580_novaseq_finally_filtered.bam_coverage.txt 19-5580_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-hcc1143_hiseq_finally_filtered.bam_coverage.txt 19-hcc1143_hiseq.csv
+sbatch calculate_mean_depths.sh 19-hcc1143_novaseq_finally_filtered.bam_coverage.txt 19-hcc1143_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-hcc1187_hiseq_finally_filtered.bam_coverage.txt 19-hcc1187_hiseq.csv
+sbatch calculate_mean_depths.sh 19-hcc1187_novaseq_finally_filtered.bam_coverage.txt 19-hcc1187_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HCC1395_NORMAL_HISEQX_finally_filtered.bam_coverage.txt 19-hcc1395_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HCC1395_NORMAL_NOVASEQ_finally_filtered.bam_coverage.txt 19-hcc1395_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-hct116_hiseq_finally_filtered.bam_coverage.txt 19-hct116_hiseq.csv
+sbatch calculate_mean_depths.sh 19-hct116_novaseq_finally_filtered.bam_coverage.txt 19-hct116_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG001_hiseq_finally_filtered.bam_coverage.txt 19-HG001_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG001_novaseq_finally_filtered.bam_coverage.txt 19-HG001_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG002_hiseq_finally_filtered.bam_coverage.txt 19-HG002_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG002_novaseq_finally_filtered.bam_coverage.txt 19-HG002_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG003_hiseq_finally_filtered.bam_coverage.txt 19-HG003_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG003_novaseq_finally_filtered.bam_coverage.txt 19-HG003_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG004_hiseq_finally_filtered.bam_coverage.txt 19-HG004_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG004_novaseq_finally_filtered.bam_coverage.txt 19-HG004_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG005_hiseq_finally_filtered.bam_coverage.txt 19-HG005_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG005_novaseq_finally_filtered.bam_coverage.txt 19-HG005_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG006_hiseq_finally_filtered.bam_coverage.txt 19-HG006_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG006_novaseq_finally_filtered.bam_coverage.txt 19-HG006_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-HG007_hiseq_finally_filtered.bam_coverage.txt 19-HG007_hiseq.csv
+sbatch calculate_mean_depths.sh 19-HG007_novaseq_finally_filtered.bam_coverage.txt 19-HG007_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-km12_hiseq_finally_filtered.bam_coverage.txt 19-km12_hiseq.csv
+sbatch calculate_mean_depths.sh 19-km12_novaseq_finally_filtered.bam_coverage.txt 19-km12_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-NA12891_hiseq_finally_filtered.bam_coverage.txt 19-NA12891_hiseq.csv
+sbatch calculate_mean_depths.sh 19-NA12891_novaseq_finally_filtered.bam_coverage.txt 19-NA12891_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-NA12892_hiseq_finally_filtered.bam_coverage.txt 19-NA12892_hiseq.csv
+sbatch calculate_mean_depths.sh 19-NA12892_novaseq_finally_filtered.bam_coverage.txt 19-NA12892_novaseq.csv
+
+sbatch calculate_mean_depths.sh 19-u2os_hiseq_finally_filtered.bam_coverage.txt 19-u2os_hiseq.csv
+sbatch calculate_mean_depths.sh 19-u2os_novaseq1_finally_filtered.bam_coverage.txt 19-u2os_novaseq1.csv
+
+sbatch calculate_mean_depths.sh na12878_hiseq_chr19_finally_filtered.bam_coverage.txt na12878_hiseq_chr19.csv
+sbatch calculate_mean_depths.sh na12878_novaseqx_chr19_finally_filtered.bam_coverage.txt na12878_novaseqx_chr19.csv
+
+
 Analyze mutation count distributions at particular ADs based on AAF (1%, 2%, 5%, 10%) x Coverage.
+
+
+
 Compute Novaseq vs HiSeq chi-square statistics for each mutational category.
+
+
+
 Do up heatmap that is 20 x 6 in size (20 samples, 6 categories, colored depending on chi-square statistic).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
