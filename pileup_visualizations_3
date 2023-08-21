@@ -49,7 +49,7 @@ Get tables from vcfs.
           sbatch vcf_to_table.sh na12878_hiseq_chr19_finally_filtered
           sbatch vcf_to_table.sh na12878_novaseqx_chr19_finally_filtered
 
-Calculate coverages from BAMs.
+Calculate coverages from processed BAMs.
 - link to coverages folder [done]
         ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-1465ba9_hiseq_finally_filtered.bam .
         ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/19-1465ba9_novaseq_finally_filtered.bam .
