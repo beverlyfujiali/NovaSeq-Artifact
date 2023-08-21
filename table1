@@ -1,3 +1,128 @@
 Link all unprocessed BAMs to the same folder.
+  - hcc1143
+  - hcc1187
+  - ln -s ../19-5575_novaseq.bam .
+  - ln -s ../19-5580_novaseq.bam .
+  - ln -s  ../19-4638_hiseq.bam .
+  - ln -s ../19-1465ba9_novaseq.bam .
+  - ln -s ../19-1465ba9_hiseq.bam .
+
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_nci/hiseq/19-HCC1395_NORMAL_HISEQX.bam .
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/bams/bams_from_nci/novaseq/19-HCC1395_NORMAL_NOVASEQ.bam .
+
+
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg001/hg001_hiseq/19-HG001_hiseq.bam .
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg001/hg001_novaseq/19-HG001_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg002/hg002_hiseq/19-HG002_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg002/hg002_novaseq/19-HG002_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg003/hg003_hiseq/19-HG003_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg003/hg003_novaseq/19-HG003_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg004/hg004_hiseq/19-HG004_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg004/hg004_novaseq/19-HG004_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg005/hg005_hiseq/19-HG005_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg005/hg005_novaseq/19-HG005_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg006/hg006_hiseq/19-HG006_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg006/hg006_novaseq/19-HG006_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg007/hg007_hiseq/19-HG007_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/hg007/hg007_novaseq/19-HG007_novaseq.bam .
+
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12891/na12891_hiseq/19-NA12891_hiseq.bam .
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12891/na12891_novaseq/19-NA12891_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12892/na12892_hiseq/19-NA12892_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/giab/na12892/na12892_novaseq/19-NA12892_novaseq.bam .
+
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/na12878/na12878_novaseqx_chr19.bam .
+  - ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/na12878/na12878_hiseq_chr19.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_hiseq/19-km12_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/km12/km12_novaseq/19-km12_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_hiseq/19-hct116_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct116/hct116_novaseq/19-hct116_novaseq.bam .
+
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_hiseq/19-u2os_hiseq.bam .
+ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_novaseq1/19-u2os_novaseq1.bam .
 
 Calculate coverages of all unprocessed BAMs.
+1. sbatch coverage.sh <bam>
+2. sbatch calculate_mean_depths.sh <txt>
+3. bash find_median.sh <csv>
+4. sbtach read_depth_plot.sh <csv> <png> <title in string>
+
+sbatch coverage.sh 19-1465ba9_hiseq.bam
+sbatch coverage.sh 19-1465ba9_novaseq.bam
+sbatch coverage.sh 19-4638_hiseq.bam
+sbatch coverage.sh 19-5575_novaseq.bam
+sbatch coverage.sh 19-5580_novaseq.bam
+sbatch coverage.sh 19-hcc1143_hiseq.bam
+sbatch coverage.sh 19-hcc1143_novaseq.bam
+sbatch coverage.sh 19-hcc1187_hiseq.bam
+sbatch coverage.sh 19-hcc1187_novaseq.bam
+sbatch coverage.sh 19-HCC1395_NORMAL_HISEQX.bam
+sbatch coverage.sh 19-HCC1395_NORMAL_NOVASEQ.bam
+sbatch coverage.sh 19-hct116_hiseq.bam
+sbatch coverage.sh 19-hct116_novaseq.bam
+sbatch coverage.sh 19-HG001_hiseq.bam
+sbatch coverage.sh 19-HG001_novaseq.bam
+sbatch coverage.sh 19-HG002_hiseq.bam
+sbatch coverage.sh 19-HG002_novaseq.bam
+sbatch coverage.sh 19-HG003_hiseq.bam
+sbatch coverage.sh 19-HG003_novaseq.bam
+sbatch coverage.sh 19-HG004_hiseq.bam
+sbatch coverage.sh 19-HG004_novaseq.bam
+sbatch coverage.sh 19-HG005_hiseq.bam
+sbatch coverage.sh 19-HG005_novaseq.bam
+sbatch coverage.sh 19-HG006_hiseq.bam
+sbatch coverage.sh 19-HG006_novaseq.bam
+sbatch coverage.sh 19-HG007_hiseq.bam
+sbatch coverage.sh 19-HG007_novaseq.bam
+sbatch coverage.sh 19-km12_hiseq.bam
+sbatch coverage.sh 19-km12_novaseq.bam
+sbatch coverage.sh 19-NA12891_hiseq.bam
+sbatch coverage.sh 19-NA12891_novaseq.bam
+sbatch coverage.sh 19-NA12892_hiseq.bam
+sbatch coverage.sh 19-NA12892_novaseq.bam
+sbatch coverage.sh 19-u2os_hiseq.bam
+sbatch coverage.sh 19-u2os_novaseq1.bam
+sbatch coverage.sh na12878_hiseq_chr19.bam
+sbatch coverage.sh na12878_novaseqx_chr19.bam
+
+sbatch calculate_mean_depths.sh 19-hcc1143_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-hcc1143_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-hcc1187_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-hcc1187_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HCC1395_NORMAL_HISEQX.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HCC1395_NORMAL_NOVASEQ.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-hct116_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-hct116_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG001_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG001_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG002_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG002_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG003_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG003_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG004_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG004_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG005_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG005_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG006_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG006_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG007_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-HG007_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-km12_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-km12_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-NA12891_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-NA12891_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-NA12892_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-NA12892_novaseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-u2os_hiseq.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-u2os_novaseq1.bam_coverage.txt
+sbatch calculate_mean_depths.sh na12878_hiseq_chr19.bam_coverage.txt
+sbatch calculate_mean_depths.sh na12878_novaseqx_chr19.bam_coverage.txt
