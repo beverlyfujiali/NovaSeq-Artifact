@@ -277,7 +277,7 @@ sbatch 6_align_grch37.sh 19-5580_novaseq.1_p.fastq 19-5580_novaseq.2_p.fastq 150
 sbatch 6_align_grch37.sh 19-4638_hiseq.1_p.fastq 19-4638_hiseq.2_p.fastq 15017925
 
 aug 21, monday
-sbatch 6_align_grch37.sh 19-5580_ba17.1_p.fastq 19-5580_ba17.2_p.fastq
+sbatch 6_align_grch37.sh 19-5580_ba17.1_p.fastq 19-5580_ba17.2_p.fastq 15433356
 sbatch 6_align_grch37.sh 19-5580_ba18.1_p.fastq 19-5580_ba18.2_p.fastq	
 sbatch 6_align_grch37.sh 19-5580_ba9.1_p.fastq 19-5580_ba9.2_p.fastq
 sbatch 6_align_grch37.sh 19-5580_hippocampus.1_p.fastq 19-5580_hippocampus.2_p.fastq
@@ -289,7 +289,7 @@ sbatch 6_align_grch37.sh 19-5575_hippocampus.1_p.fastq 19-5575_hippocampus.2_p.f
 
 sbatch 6_align_grch37.sh 19-4638_0118-cx-1bBA17b.1_p.fastq 19-4638_0118-cx-1bBA17b.2_p.fastq
 sbatch 6_align_grch37.sh 19-4638_0118-cx-1bBA18b.1_p.fastq 19-4638_0118-cx-1bBA18b.2_p.fastq
-sbatch 6_align_grch37.sh 19-4638_1024-pfc-bulk.1_p.fastq 19-4638_1024-pfc-bulk.2_p.fastq
+sbatch 6_align_grch37.sh 19-4638_1024-pfc-bulk.1_p.fastq 19-4638_1024-pfc-bulk.2_p.fastq 15433366
 
 7. Postprocess trimmed BAMs using fixmate, sort, markdup
 sbatch 7_postprocess_bam.sh 19-km12_hiseq_trimmed.bam 
@@ -342,8 +342,8 @@ sbatch 7_postprocess_bam.sh 19-5580_novaseq_trimmed.bam
 sbatch 7_postprocess_bam.sh 19-4638_hiseq_trimmed.bam 
 
 aug 21, monday
-sbatch 7_postprocess_bam.sh 19-5580_ba17_trimmed.bam 
-sbatch 7_postprocess_bam.sh 19-5580_ba18_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-5580_ba17_trimmed.bam (15439982)
+sbatch 7_postprocess_bam.sh 19-5580_ba18_trimmed.bam 15439465
 sbatch 7_postprocess_bam.sh 19-5580_ba9_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-5580_hippocampus_trimmed.bam 
 
@@ -354,7 +354,7 @@ sbatch 7_postprocess_bam.sh 19-5575_hippocampus_trimmed.bam
 
 sbatch 7_postprocess_bam.sh 19-4638_0118-cx-1bBA17b_trimmed.bam 
 sbatch 7_postprocess_bam.sh 19-4638_0118-cx-1bBA18b_trimmed.bam 
-sbatch 7_postprocess_bam.sh 19-4638_1024-pfc-bulk_trimmed.bam 
+sbatch 7_postprocess_bam.sh 19-4638_1024-pfc-bulk_trimmed.bam done
 
 8. Filter trimmed BAMs by mapping quality (60), removing reads not in proper pairs, or fail sec/supp alignments/are duplicates/indels
 sbatch 8_aggressive_filter.sh 19-km12_hiseq_postprocessed.bam 
@@ -406,7 +406,7 @@ sbatch 8_aggressive_filter.sh 19-5580_novaseq_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-4638_hiseq_postprocessed.bam 
 
 aug 21, monday
-sbatch 8_aggressive_filter.sh 19-5580_ba17_postprocessed.bam 
+sbatch 8_aggressive_filter.sh 19-5580_ba17_postprocessed.bam  (15440950)
 sbatch 8_aggressive_filter.sh 19-5580_ba18_postprocessed.bam 
 sbatch 8_aggressive_filter.sh 19-5580_ba9_postprocessed.bam 
 sbatch 8_aggressive_filter.sh 19-5580_hippocampus_postprocessed.bam 
@@ -417,8 +417,8 @@ sbatch 8_aggressive_filter.sh 19-5575_ba9_postprocessed.bam
 sbatch 8_aggressive_filter.sh 19-5575_hippocampus_postprocessed.bam 
 
 sbatch 8_aggressive_filter.sh 19-4638_0118-cx-1bBA17b_postprocessed.bam 
-sbatch 8_aggressive_filter.sh 19-4638_0118-cx-1bBA18b_postprocessed.bam 
-sbatch 8_aggressive_filter.sh 19-4638_1024-pfc-bulk_postprocessed.bam 
+sbatch 8_aggressive_filter.sh 19-4638_0118-cx-1bBA18b_postprocessed.bam  
+sbatch 8_aggressive_filter.sh 19-4638_1024-pfc-bulk_postprocessed.bam  
 
 9. Pile up & call (choose script as per ref genome grch37/hg38)
 sbatch 9_mpileup_hg38.sh 19-km12_hiseq_finally_filtered.bam 
@@ -470,8 +470,8 @@ sbatch 9_mpileup_grch37.sh 19-5580_novaseq_finally_filtered.bam 15067033
 sbatch 9_mpileup_grch37.sh 19-4638_hiseq_finally_filtered.bam 15067034
 
 aug 21, monday
-sbatch 9_mpileup_grch37.sh 19-5580_ba17_finally_filtered.bam
-sbatch 9_mpileup_grch37.sh 19-5580_ba18_finally_filtered.bam
+sbatch 9_mpileup_grch37.sh 19-5580_ba17_finally_filtered.bam 15441335
+sbatch 9_mpileup_grch37.sh 19-5580_ba18_finally_filtered.bam 15440950
 sbatch 9_mpileup_grch37.sh 19-5580_ba9_finally_filtered.bam
 sbatch 9_mpileup_grch37.sh 19-5580_hippocampus_finally_filtered.bam
 
@@ -482,4 +482,59 @@ sbatch 9_mpileup_grch37.sh 19-5575_hippocampus_finally_filtered.bam
 
 sbatch 9_mpileup_grch37.sh 19-4638_0118-cx-1bBA17b_finally_filtered.bam
 sbatch 9_mpileup_grch37.sh 19-4638_0118-cx-1bBA18b_finally_filtered.bam
-sbatch 9_mpileup_grch37.sh 19-4638_1024-pfc-bulk_finally_filtered.bam
+sbatch 9_mpileup_grch37.sh 19-4638_1024-pfc-bulk_finally_filtered.bam 15440968
+
+
+
+-----
+
+
+sbatch 1_bcf_to_vcf.sh 19-5580_ba17_finally_filtered.bcf-call not done yet
+sbatch 1_bcf_to_vcf.sh 19-5580_ba18_finally_filtered.bcf-call 15442042 done
+sbatch 1_bcf_to_vcf.sh 19-5580_ba9_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-5580_hippocampus_finally_filtered.bcf-call
+
+sbatch 1_bcf_to_vcf.sh 19-5575_ba17_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-5575_ba18_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-5575_ba9_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-5575_hippocampus_finally_filtered.bcf-call
+
+sbatch 1_bcf_to_vcf.sh 19-4638_0118-cx-1bBA17b_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-4638_0118-cx-1bBA18b_finally_filtered.bcf-call
+sbatch 1_bcf_to_vcf.sh 19-4638_1024-pfc-bulk_finally_filtered.bcf-call 15442051 done
+
+
+----
+
+sbatch vcf_to_table.sh 19-5580_ba17_finally_filtered not done yet
+sbatch vcf_to_table.sh 19-5580_ba18_finally_filtered 15442123
+sbatch vcf_to_table.sh 19-5580_ba9_finally_filtered
+sbatch vcf_to_table.sh 19-5580_hippocampus_finally_filtered
+
+sbatch vcf_to_table.sh 19-5575_ba17_finally_filtered
+sbatch vcf_to_table.sh 19-5575_ba18_finally_filtered
+sbatch vcf_to_table.sh 19-5575_ba9_finally_filtered
+sbatch vcf_to_table.sh 19-5575_hippocampus_finally_filtered
+
+sbatch vcf_to_table.sh 19-4638_0118-cx-1bBA17b_finally_filtered
+sbatch vcf_to_table.sh 19-4638_0118-cx-1bBA18b_finally_filtered
+sbatch vcf_to_table.sh 19-4638_1024-pfc-bulk_finally_filtered 15442132
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
