@@ -50,6 +50,34 @@ ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/hct11
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_hiseq/19-u2os_hiseq.bam .
 ln -s /n/data1/hms/dbmi/park/DATA/crossplatform/pileup/3_cancer_cell_lines/u2os/u2os_novaseq1/19-u2os_novaseq1.bam .
 
+ln -s ../19-5580_ba17.bam	 .
+ln -s ../19-5580_ba18.bam	.
+ln -s ../19-5580_ba9.bam .
+ln -s ../19-5580_hippocampus.bam .
+
+ln -s ../19-5575_ba17.bam .
+ln -s ../19-5575_ba18.bam .
+ln -s ../19-5575_ba9.bam .
+ln -s ../19-5575_hippocampus.bam .
+
+ln -s ../19-4638_0118-cx-1bBA17b.bam .
+ln -s ../19-4638_0118-cx-1bBA18b.bam .
+ln -s ../19-4638_1024-pfc-bulk.bam .
+
+sbatch sort.sh 19-5580_ba17.bam
+sbatch sort.sh 19-5580_ba18.bam
+sbatch sort.sh 19-5580_ba9.bam
+sbatch sort.sh 19-5580_hippocampus.bam
+
+sbatch sort.sh 19-5575_ba17.bam
+sbatch sort.sh 19-5575_ba18.bam 
+sbatch sort.sh 19-5575_ba9.bam
+sbatch sort.sh 19-5575_hippocampus.bam
+
+sbatch sort.sh 19-4638_0118-cx-1bBA17b.bam
+sbatch sort.sh 19-4638_0118-cx-1bBA18b.bam
+sbatch sort.sh 19-4638_1024-pfc-bulk.bam
+
 Calculate coverages of all unprocessed BAMs.
 1. sbatch coverage.sh <bam>
 2. sbatch calculate_mean_depths.sh <txt>
@@ -126,3 +154,153 @@ sbatch calculate_mean_depths.sh 19-u2os_hiseq.bam_coverage.txt
 sbatch calculate_mean_depths.sh 19-u2os_novaseq1.bam_coverage.txt
 sbatch calculate_mean_depths.sh na12878_hiseq_chr19.bam_coverage.txt
 sbatch calculate_mean_depths.sh na12878_novaseqx_chr19.bam_coverage.txt
+
+
+
+sbatch coverage.sh 19-4638_0118-cx-1bBA17b.bam.sorted.bam
+sbatch coverage.sh 19-4638_0118-cx-1bBA18b.bam.sorted.bam
+sbatch coverage.sh 19-4638_1024-pfc-bulk.bam.sorted.bam
+
+sbatch coverage.sh 19-5575_ba17.bam.sorted.bam
+sbatch coverage.sh 19-5575_ba18.bam.sorted.bam
+sbatch coverage.sh 19-5575_ba9.bam.sorted.bam
+sbatch coverage.sh 19-5575_hippocampus.bam.sorted.bam
+
+sbatch coverage.sh 19-5580_ba17.bam.sorted.bam
+sbatch coverage.sh 19-5580_ba18.bam.sorted.bam
+sbatch coverage.sh 19-5580_ba9.bam.sorted.bam
+sbatch coverage.sh 19-5580_hippocampus.bam.sorted.bam
+
+-----
+
+
+sbatch calculate_mean_depths.sh 19-4638_0118-cx-1bBA17b.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-4638_0118-cx-1bBA18b.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-4638_1024-pfc-bulk.bam.sorted.bam_coverage.txt\
+sbatch calculate_mean_depths.sh 19-5575_ba17.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_ba18.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_ba9.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_hippocampus.bam.sorted.bam_coverage.txt
+
+sbatch calculate_mean_depths.sh 19-5580_ba17.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5580_ba18.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5580_ba9.bam.sorted.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5580_hippocampus.bam.sorted.bam_coverage.txt
+
+File: 19-4638_0118-cx-1bBA17b.bam.sorted.bam_coverage.txt.csv
+Median value: 209.6648
+File: 19-4638_0118-cx-1bBA18b.bam.sorted.bam_coverage.txt.csv
+Median value: 205.565
+File: 19-4638_1024-pfc-bulk.bam.sorted.bam_coverage.txt.csv
+Median value: 228.9156
+
+File: 19-5575_ba17.bam.sorted.bam_coverage.txt.csv
+Median value: 369.152
+File: 19-5575_ba18.bam.sorted.bam_coverage.txt.csv
+Median value: 359.272
+File: 19-5575_ba9.bam.sorted.bam_coverage.txt.csv
+Median value: 320.928
+File: 19-5575_hippocampus.bam.sorted.bam_coverage.txt.csv
+Median value: 324.919
+
+File: 19-5580_ba17.bam.sorted.bam_coverage.txt.csv
+Median value: 424.082
+File: 19-5580_ba18.bam.sorted.bam_coverage.txt.csv
+Median value: 437.705
+File: 19-5580_ba9.bam.sorted.bam_coverage.txt.csv
+Median value: 332.6179
+File: 19-5580_hippocampus.bam.sorted.bam_coverage.txt.csv
+Median value: 364.397
+
+
+----- ln -s to coverages folder
+
+
+ln -s ../19-4638_0118-cx-1bBA17b_finally_filtered.bam .
+ln -s ../19-4638_0118-cx-1bBA18b_finally_filtered.bam .
+ln -s ../19-4638_1024-pfc-bulk_finally_filtered.bam .
+
+
+ln -s ../19-5575_ba17_finally_filtered.bam .
+ln -s ../19-5575_ba18_finally_filtered.bam .
+ln -s ../19-5575_ba9_finally_filtered.bam .
+ln -s ../19-5575_hippocampus_finally_filtered.bam .
+
+
+## wait 19-5580_ba17_finally_filtered.bam .
+ln -s ../19-5580_ba18_finally_filtered.bam .
+ln -s ../19-5580_ba9_finally_filtered.bam .
+ln -s ../19-5580_hippocampus_finally_filtered.bam .
+
+-----
+
+sbatch coverage.sh 19-4638_0118-cx-1bBA17b_finally_filtered.bam 15441082
+sbatch coverage.sh 19-4638_0118-cx-1bBA18b_finally_filtered.bam
+sbatch coverage.sh 19-4638_1024-pfc-bulk_finally_filtered.bam
+
+
+sbatch coverage.sh 19-5575_ba17_finally_filtered.bam
+sbatch coverage.sh 19-5575_ba18_finally_filtered.bam
+sbatch coverage.sh 19-5575_ba9_finally_filtered.bam
+sbatch coverage.sh 19-5575_hippocampus_finally_filtered.bam
+
+
+## wait 19-5580_ba17_finally_filtered.bam 15441669
+sbatch coverage.sh 19-5580_ba18_finally_filtered.bam
+sbatch coverage.sh 19-5580_ba9_finally_filtered.bam
+sbatch coverage.sh 19-5580_hippocampus_finally_filtered.bam 15441104
+
+-----
+conda activate SigProfiler
+
+sbatch calculate_mean_depths.sh 19-4638_0118-cx-1bBA17b_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-4638_0118-cx-1bBA18b_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-4638_1024-pfc-bulk_finally_filtered.bam_coverage.txt
+
+
+sbatch calculate_mean_depths.sh 19-5575_ba17_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_ba18_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_ba9_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5575_hippocampus_finally_filtered.bam_coverage.txt
+
+
+
+
+sbatch calculate_mean_depths.sh 19-5580_ba18_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5580_ba9_finally_filtered.bam_coverage.txt
+sbatch calculate_mean_depths.sh 19-5580_hippocampus_finally_filtered.bam_coverage.txt
+
+todo:
+conda activate SigProfiler
+sbatch calculate_mean_depths.sh 19-5580_ba17_finally_filtered.bam_coverage.txt
+
+File: 19-4638_0118-cx-1bBA17b_finally_filtered.bam_coverage.txt.csv
+Median value: 107.552
+File: 19-4638_0118-cx-1bBA18b_finally_filtered.bam_coverage.txt.csv
+Median value: 103.351
+File: 19-4638_1024-pfc-bulk_finally_filtered.bam_coverage.txt.csv
+Median value: 107.7291
+
+File: 19-5575_ba17_finally_filtered.bam_coverage.txt.csv
+Median value: 236.673
+File: 19-5575_ba18_finally_filtered.bam_coverage.txt.csv
+Median value: 150.5176
+File: 19-5575_ba9_finally_filtered.bam_coverage.txt.csv
+Median value: 166.1517
+File: 19-5575_hippocampus_finally_filtered.bam_coverage.txt.csv
+Median value: 193.3307
+
+File: 19-5580_ba17_finally_filtered.bam_coverage.txt.csv
+Median value: 273.893
+File: 19-5580_ba18_finally_filtered.bam_coverage.txt.csv
+Median value: 260.3191
+File: 19-5580_ba9_finally_filtered.bam_coverage.txt.csv
+Median value: 229.298
+File: 19-5580_hippocampus_finally_filtered.bam_coverage.txt.csv
+Median value: 158.5388
+
+
+
+
+
+
