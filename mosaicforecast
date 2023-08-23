@@ -1,1 +1,20 @@
-csubmitter --name MosaicForecast --image-path Dockerfile
+5575-BA17
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5575_20210720-CtxBA17-BULKSNK305_20210726-WGS/vcfs_combined/UMB5575_20210720-CtxBA17-BULKSNK305_20210726-WGS.19_MT2pon.filtered.vcf.gz
+
+5575-BA18
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5575_20210720-CtxBA18-BULKSNK305_20210726-WGS/vcfs_combined/UMB5575_20210720-CtxBA18-BULKSNK305_20210726-WGS.19_MT2pon.filtered.vcf.gz
+
+5575-BA9
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5575_20210720-CtxBA9-BULKSNK305_20210726-WGS/vcfs_combined/UMB5575_20210720-CtxBA9-BULKSNK305_20210726-WGS.19_MT2pon.filtered.vcf.gz
+
+
+5580-BA17
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5580_20210722-CtxBA17-BULKSNK306_20210726-WGS/vcfs_combined/UMB5580_20210722-CtxBA17-BULKSNK306_20210726-WGS.19_MT2pon.filtered.vcf.gz
+
+
+5580-BA18
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5580_20210722-CtxBA18-BULKSNK306_20210726-WGS/vcfs_combined/UMB5580_20210722-CtxBA18-BULKSNK306_20210726-WGS.19_MT2pon.filtered.vcf.gz.tbi
+
+
+5580-BA9
+/n/data1/hms/dbmi/park/vinay/analysis/spatial_sampling/20210906_additional_ba17_18_9_aligns/20220101_production_run_mosaicforecast/19/UMB5580_20210722-CtxBA9-BULKSNK306_20210726-WGS/vcfs_combined/UMB5580_20210722-CtxBA9-BULKSNK306_20210726-WGS.19_MT2pon.filtered.vcf.gz
